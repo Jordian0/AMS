@@ -8,7 +8,6 @@ inputs.addEventListener("input", function (e) {
         target.value = "";
         return;
     }
-
     if (val !== "") {
         const next = target.nextElementSibling;
         if (next) {
@@ -16,8 +15,7 @@ inputs.addEventListener("input", function (e) {
         }
     }
 });
-
-inputs.addEventListener("keyup", function (e) {
+inputs.addEventListener("keypress", function (e) {
     const target = e.target;
     const key = e.key.toLowerCase();
 
@@ -29,3 +27,9 @@ inputs.addEventListener("keyup", function (e) {
         }
     }
 });
+
+
+
+
+
+
