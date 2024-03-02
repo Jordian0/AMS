@@ -2,12 +2,13 @@
 
 session_start();
 
-// Destroy started session
-session_destroy();
+if (isset($_SESSION)) {
+    // Destroy the session
+    session_destroy();
+}
 
 // Redirect to login page
 header("Location: ../ATD/index.php");
 
-exit();
-
+exit;
 ?>

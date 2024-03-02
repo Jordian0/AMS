@@ -27,12 +27,12 @@ if(isset($_POST['login'])) {
         // Success: Set session variables and redirect to Protected page
         $_SESSION['UserData']['Username']=$logins[$userid];
         header("Location: ../attend.php");
-        exit();
+        exit;
     } else {
         // Unsuccessful attempt: Set error message
         $_SESSION['error_login'] = true;
         header("Location: ../index.php");
-        exit();
+        exit;
     }
 }
 

@@ -3,7 +3,7 @@
 // Starting session
 session_start();
 
-// Database connection details (replace with your actual information)
+// Database connection details
 $db_host = "localhost";
 $db_name = "attend";
 $db_user = "phpstorm";
