@@ -87,7 +87,7 @@
     width: 700px;
     background-color: white;
     border-radius: 0 0 20px 20px;
-    filter:drop-shadow(3px 3px 20px rgba(0,0,0,0.20000000298023224));
+    filter:drop-shadow(3px 3px 20px rgba(0,0,0,0.2));
 }
 .attend-container {
     margin: auto;
@@ -95,7 +95,7 @@
     width: 700px;
     background-color: white;
     border-radius: 0 0 20px 20px;
-    filter: drop-shadow(3px 3px 20px rgba(0,0,0,0.20000000298023224));
+    filter: drop-shadow(3px 3px 20px rgba(0,0,0,0.2));
 }
 
 .form-login {
