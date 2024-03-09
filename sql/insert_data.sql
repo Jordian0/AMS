@@ -45,7 +45,7 @@ VALUES
 
 
 # MCA DOP table
-INSERT INTO `mca_cc`(`name`, `stid`)
+INSERT INTO `mca_dop`(`name`, `stid`)
 VALUES
     ('Kumaran Kaur', 'PGD202394451'),
     ('Amrita Chaudhari', 'PGD202350939'),
@@ -57,3 +57,20 @@ VALUES
     ('Disha Korrapati', 'PGD202324160'),
     ('Kaur Choudhary', 'PGD202334087'),
     ('Indrani Nibhanupudi', 'PGD202397023');
+
+
+
+
+# timeframe table
+INSERT INTO `timeframe`(`tid`, `stime`, `etime`)
+VALUES
+    ('1', '09:15:00', '10:05:00'),
+    ('2', '10:10:00', '11:00:00'),
+    ('3', '11:05:00', '11:55:00'),
+    ('4', '12:00:00', '12:50:00'),
+    ('5', '12:55:00', '13:45:00'),
+    ('6', '13:50:00', '14:40:00'),
+    ('7', '14:45:00', '15:35:00'),
+    ('8', '15:40:00', '16:30:00'),
+    ('9', '16:35:00', '17:25:00');
+

@@ -18,8 +18,47 @@
     </div>
 
     <div class="background-body">
+        <div class="container-pa">
+            <div class="present-p toggle">Present</div>
+            <div class="absent-a toggle">Absent</div>
+        </div>
 
+        <div class="atstatus-container">
+            <div class="about-class">
+                this is the body
+            </div>
 
+            <table class="table table-bordered">
+                <thead class="thead-blue">
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">First</th>
+                        <th scope="col">Last</th>
+                        <th scope="col">Handle</th>
+                    </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <th scope="row">1</th>
+                    <td>Mark</td>
+                    <td>Otto</td>
+                    <td>@mdo</td>
+                </tr>
+                <tr>
+                    <th scope="row">2</th>
+                    <td>Jacob</td>
+                    <td>Thornton</td>
+                    <td>@fat</td>
+                </tr>
+                <tr>
+                    <th scope="row">3</th>
+                    <td>Larry</td>
+                    <td>The Bird</td>
+                    <td>@twitter</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
     </div>
 
     

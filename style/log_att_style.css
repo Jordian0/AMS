@@ -4,6 +4,7 @@
     --blue: #0044CD;
     --border-grey: rgba(0, 0, 0, 0.4);
     --danger-color: #E33535;
+    --disabled-color: #979797
 }
 
 ::placeholder {
@@ -75,7 +76,7 @@
 }
 .login-d, .atd-d {
     height: 60px;
-    background-color: #979797;
+    background-color: var(--disabled-color);
     color: white;
     cursor: not-allowed;
 }
