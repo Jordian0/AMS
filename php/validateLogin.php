@@ -26,7 +26,7 @@ if(isset($_POST['login'])) {
     if(isset($logins[$userid]) && $logins[$userid] == $otpp){
         // Success: Set session variables and redirect to Protected page
         $_SESSION['UserData']['Username']=$logins[$userid];
-        header("Location: ../src/attend.php");
+        header("Location: ../src/timet.php");
         exit;
     } else {
         // Unsuccessful attempt: Set error message

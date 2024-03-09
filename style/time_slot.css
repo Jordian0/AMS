@@ -58,6 +58,13 @@
     text-align: center;
     margin-bottom: 40px;
 }
+#select-time {
+    position: absolute;
+    top: 265px;
+    font-size: 15px;
+    text-align: center;
+    margin-top: 10px;
+}
 .timet-container {
     display: flex;
     flex-flow: row wrap;
@@ -73,7 +80,7 @@
 }
 .time {
     width: 140px;
-    height: 150px;
+    height: 200px;
     border: 1px solid #ccc;
     border-radius: 5px;
     padding-top: 10px;
@@ -105,14 +112,13 @@ hr {
     display: flex;
     justify-content: center;
     flex-flow: row wrap;
-    height: 104px;
+    height: 154px;
     width: 138px;
     padding: 8px;
 }
 .subject-name {
     display: block;
     overflow-y: hidden;
-    height: 60px;
     margin: 0 !important;
     align-self: flex-start;
     color: var(--available-s-color);
@@ -120,6 +126,7 @@ hr {
 .room-code {
     margin-top: 7px;
     margin-bottom: 0;
+    font-weight: bold;
     align-self: flex-end;
     color: var(--available-s-color);
 }
@@ -135,7 +142,6 @@ hr {
 .gone .subject-name, .gone .room-code {
     color: white;
 }
-
 
 .sub-btn {
     width: 130px;
