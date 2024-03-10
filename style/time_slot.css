@@ -48,7 +48,7 @@
 .background-body {
     position: absolute;
     width: 100%;
-    height: 850px;
+    min-height: 850px;
     background: linear-gradient(180deg, hsla(184, 66%, 91%, 0.6) 0%, hsla(296, 58%, 85%, 0.6) 80%, hsla(349, 100%, 89%, 0.6) 100%);
 }
 
@@ -80,7 +80,7 @@
 }
 .time {
     width: 140px;
-    height: 200px;
+    height: 230px;
     border: 1px solid #ccc;
     border-radius: 5px;
     padding-top: 10px;
@@ -112,13 +112,14 @@ hr {
     display: flex;
     justify-content: center;
     flex-flow: row wrap;
-    height: 154px;
+    height: 184px;
     width: 138px;
     padding: 8px;
 }
 .subject-name {
     display: block;
     overflow-y: hidden;
+    height: 140px;
     margin: 0 !important;
     align-self: flex-start;
     color: var(--available-s-color);
@@ -137,12 +138,15 @@ hr {
     color: white;
 }
 .gone .sub-room {         /* classes whose time is over */
-    background-color: var(--gone-color);
+    /*background-color: var(--gone-color);*/
 }
 .gone .subject-name, .gone .room-code {
-    color: white;
+    /*color: white;*/
 }
 
+.text-center {
+    margin-bottom: 20px;
+}
 .sub-btn {
     width: 130px;
     height: 55px;

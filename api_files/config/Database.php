@@ -25,5 +25,5 @@ class Database {
     }
 }
 
-$database = new Database;
-$db = $database->connect();
+//$database = new Database;
+//$db = $database->connect();

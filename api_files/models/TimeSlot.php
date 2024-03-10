@@ -8,6 +8,7 @@ class TimeSlot {
 
     // Subjects properties
     public $day;
+    public $tid;
 
     // Database Data
     private $connection;
@@ -54,7 +55,7 @@ class TimeSlot {
             LEFT JOIN
                 subjects ON tt.course_id = subjects.course_id
             WHERE
-                tt.day = '.$this->day.'
+                tt.day = 2
         ';
 
         $times= $this->connection->prepare($query);
@@ -63,4 +64,38 @@ class TimeSlot {
         return $times;
     }
 
+    // Method to read one subjects from database
+    public function readSubject($tid) {
+        $today = date('l');
+        $this->day = $this->days[$today];
+        $this->tid = $tid;
+
+        // Query for reading timetable table
+        $query = '
+            SELECT 
+                tt.tid,
+                timeframe.stime,
+                timeframe.etime,
+                tt.course_id,
+                subjects.course_name as course,
+                subjects.faculty,
+                tt.grp,
+                tt.room_no
+            FROM
+                '.$this->table.' tt
+            LEFT JOIN
+                timeframe ON tt.tid = timeframe.tid
+            LEFT JOIN
+                subjects ON tt.course_id = subjects.course_id
+            WHERE
+                tt.day = 2 AND tt.tid=?
+            LIMIT 0,1
+        ';
+
+        $times= $this->connection->prepare($query);
+        $times->bindValue(1, $this->tid, PDO::PARAM_INT);
+        $times->execute();
+
+        return $times;
+    }
 }

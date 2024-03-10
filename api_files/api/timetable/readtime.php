@@ -1,5 +1,7 @@
 <?php
 
+// to read the time table for particular day
+
 error_reporting(E_ALL);
 ini_set('display_error', 1);
 
@@ -16,9 +18,9 @@ include_once('../../models/TimeSlot.php');
 $database = new Database;
 $db = $database->connect();
 
-$timeslt = new TimeSlot($db);
+$timeslot = new TimeSlot($db);
 
-$data = $timeslt->readTable();
+$data = $timeslot->readTable();
 
 // If there is class in database
 if($data->rowCount()) {

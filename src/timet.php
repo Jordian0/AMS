@@ -43,7 +43,7 @@
                     </div>
                 </div>
                 <div class="time" id="tm-3" onclick="selectDiv('tm-3')">
-                    <p class="time-duration active-time">11:05 - 11:55</p>
+                    <p class="time-duration inactive-time">11:05 - 11:55</p>
                     <hr>
                     <div class="sub-room">
                         <p class="subject-name"></p>
@@ -59,7 +59,7 @@
                     </div>
                 </div>
                 <div class="time" id="tm-5" onclick="selectDiv('tm-5')">
-                    <p class="time-duration active-time">12:55 - 13:45</p>
+                    <p class="time-duration inactive-time">12:55 - 13:45</p>
                     <hr>
                     <div class="sub-room">
                         <p class="subject-name"></p>
@@ -67,7 +67,7 @@
                     </div>
                 </div>
                 <div class="time" id="tm-6" onclick="selectDiv('tm-6')">
-                    <p class="time-duration active-time">13:50 - 14:40</p>
+                    <p class="time-duration inactive-time">13:50 - 14:40</p>
                     <hr>
                     <div class="sub-room">
                         <p class="subject-name"></p>
@@ -75,7 +75,7 @@
                     </div>
                 </div>
                 <div class="time" id="tm-7" onclick="selectDiv('tm-7')">
-                    <p class="time-duration">14:45 - 15:35</p>
+                    <p class="time-duration inactive-time">14:45 - 15:35</p>
                     <hr>
                     <div class="sub-room">
                         <p class="subject-name"></p>
@@ -83,7 +83,7 @@
                     </div>
                 </div>
                 <div class="time" id="tm-8" onclick="selectDiv('tm-8')">
-                    <p class="time-duration">15:40 - 16:30</p>
+                    <p class="time-duration inactive-time">15:40 - 16:30</p>
                     <hr>
                     <div class="sub-room">
                         <p class="subject-name"></p>
@@ -91,7 +91,7 @@
                     </div>
                 </div>
                 <div class="time" id="tm-9" onclick="selectDiv('tm-9')">
-                    <p class="time-duration">16:35 - 17:25</p>
+                    <p class="time-duration inactive-time">16:35 - 17:25</p>
                     <hr>
                     <div class="sub-room">
                         <p class="subject-name"></p>
