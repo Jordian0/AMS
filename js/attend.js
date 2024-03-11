@@ -27,6 +27,6 @@ document.getElementById('cur-day').innerHTML = day;
 // Function to redirect to another page
 function redirectToPage() {
     // Redirect the user to the new page
-    window.location.href = '../src/apstatus.php';
+    window.location.href = '../public/apstatus.php';
 }
 

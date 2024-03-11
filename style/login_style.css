@@ -1,5 +1,15 @@
 @import "default.css";
 
+.headerd {
+    min-width: 800px;
+}
+.background-body {
+    min-width: 800px;
+    width: 100%;
+    min-height: 850px;
+}
+
+
 .container-la {
     display: flex;
     flex-flow: row nowrap;

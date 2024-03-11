@@ -3,7 +3,7 @@ session_start();
 
 // If user logged out and still trying to access the page
 if(!isset($_SESSION['UserData'])){
-    header("location: index.php");
+    header("location: index.src");
     exit;
 }
 
@@ -26,7 +26,7 @@ if(isset($_SESSION['time-id'])) {
 <body>
     <div class="headerd">
         <img id="icon-su" src="../media/images/icon.png" alt="Shoolini University">
-        <a href="/php/logout.php" >
+        <a href="/src/logout.php" >
             <img id="profile-p" class="profile-img" src="../media/images/sage.png" alt="Profile">
         </a>
     </div>
@@ -57,6 +57,9 @@ if(isset($_SESSION['time-id'])) {
                 </div>
             </form>
         </div>
+
+<!--        <div class="select-t toggle">Subject</div>-->
+
 
         <div id="api-sub-container">
             <h5 class="time-heading" id="cur-day">Day</h5>

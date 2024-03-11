@@ -65,6 +65,6 @@ catch (Exception $e) {
     $_SESSION['sql_message'] = $e->getMessage();
 }
 
-header("Location: index.php");
+header("Location: index.src");
 
 exit();

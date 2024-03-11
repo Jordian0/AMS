@@ -2,7 +2,7 @@
 const weekday = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
 const d = new Date();
 let day = weekday[d.getDay()];
-document.getElementById('cur-day').innerHTML = "Select a time slot: "+day;
+document.getElementById('cur-day').innerHTML = "Select a time slot:   "+day;
 
 
 // Function to validate the form

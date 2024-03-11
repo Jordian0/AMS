@@ -68,7 +68,7 @@ function validateForm() {
 
 
 // console.log(login_error);
-// checking for login error message in php variable that is passed
+// checking for login error message in src variable that is passed
 if(login_error) {
     let errorMessage = document.getElementById('error_login');
     errorMessage.style.cssText = 'display: inline;'

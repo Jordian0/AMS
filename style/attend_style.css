@@ -1,5 +1,26 @@
 @import "default.css";
 
+.headerd {
+    min-width: 800px;
+}
+.background-body {
+    min-width: 800px;
+    width: 100%;
+    min-height: 850px;
+}
+
+
+.container-la {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    align-items: flex-end;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 12%;
+}
+
 .toggle {
     border-radius: 20px 20px 0 0;
     width: 48%;
@@ -113,6 +134,20 @@
 }
 .mrk-btn {
     background-color: var(--blue);
+    color: white;
+}
+
+/* Subject button */
+.select-t {
+    height: 20px;
+    width: 200px;
+    background-color: var(--danger-color);
+    color: transparent;
+    cursor: pointer;
+    z-index: 1;
+}
+.select-t:hover {
+    height: 50px;
     color: white;
 }
 

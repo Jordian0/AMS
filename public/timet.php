@@ -3,7 +3,7 @@ session_start();
 
 // If user logged out and still trying to access the page
 if(!isset($_SESSION['UserData'])) {
-    header("location: index.php");
+    header("location: index.src");
     exit;
 }
 ?>
@@ -22,7 +22,7 @@ if(!isset($_SESSION['UserData'])) {
 <body>
     <div class="headerd">
         <img id="icon-su" src="../media/images/icon.png" alt="Shoolini University">
-        <a href="/php/logout.php" >
+        <a href="/src/logout.php" >
             <img id="profile-p" class="profile-img" src="../media/images/sage.png" alt="Profile">
         </a>
     </div>
@@ -33,7 +33,7 @@ if(!isset($_SESSION['UserData'])) {
             Please choose a time slot.
         </div>
 
-        <form action="../php/timeSlot.php" method="post" onsubmit="return validateForm()">
+        <form action="../src/timeSlot.php" method="post" onsubmit="return validateForm()">
             <div class="timet-container">
                 <input type="hidden" id="selectedTime" name="selectedTime">
                 <div class="time gone" id="tm-1" onclick="selectDiv('tm-1')">

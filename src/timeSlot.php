@@ -12,11 +12,11 @@ if(isset($_POST['select'])) {
     if($times) {
         // get last digit to get time id.
         $_SESSION['time-id'] = substr($times, -1);
-        header("Location: ../src/attend.php");
+        header("Location: ../public/attend.php");
         exit;
     }
     else {
-        header("Location: ../src/timet.php");
+        header("Location: ../public/timet.php");
         exit;
     }
 }

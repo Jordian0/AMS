@@ -55,10 +55,11 @@ class TimeSlot {
             LEFT JOIN
                 subjects ON tt.course_id = subjects.course_id
             WHERE
-                tt.day = 2
+                tt.day = ?
         ';
 
         $times= $this->connection->prepare($query);
+        $times->bindValue(1, $this->day, PDO::PARAM_INT);
         $times->execute();
 
         return $times;
@@ -88,12 +89,13 @@ class TimeSlot {
             LEFT JOIN
                 subjects ON tt.course_id = subjects.course_id
             WHERE
-                tt.day = 2 AND tt.tid=?
+                tt.day = ? AND tt.tid=?
             LIMIT 0,1
         ';
 
         $times= $this->connection->prepare($query);
-        $times->bindValue(1, $this->tid, PDO::PARAM_INT);
+        $times->bindValue(1, $this->day, PDO::PARAM_INT);
+        $times->bindValue(2, $this->tid, PDO::PARAM_INT);
         $times->execute();
 
         return $times;

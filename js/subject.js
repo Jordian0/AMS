@@ -1,6 +1,6 @@
 // Function to fetch the subject/class data from the table
 async function getSubject(page) {
-    // console.log(timeid);
+    console.log(timeid);
     const api_url = `http://localhost:63342/ATD/api_files/api/timetable/readsubject.php?id=${timeid}`;
     // Making an API call (request) and getting the response back
     const response = await fetch(api_url);
