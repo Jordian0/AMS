@@ -1,8 +1,9 @@
 const inputs = document.getElementById("otp");
-
 inputs.addEventListener("input", function (e) {
     const target = e.target;
-    const val = target.value;
+    let val = target.value;
+    val = val.replace(/\D/g, '');
+    target.value = val;
 
     if (isNaN(val)) {
         target.value = "";

@@ -1,81 +1,59 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800&display=swap');
-
-:root {
-    --blue: #0044CD;
-    --border-grey: rgba(0, 0, 0, 0.4);
-    --danger-color: #E33535;
-    --disabled-color: #979797;
-}
-
-::placeholder {
-    opacity: 0.5;
-}
-
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Poppins', 'sans-serif';
-}
+@import "default.css";
 
 .headerd {
-    position: relative;
-    width: auto;
-    height:  80px;
-    background-color: var(--danger-color);
-}
-
-#icon-su {
-    float: left;
-    width: 110px;
-    height: 60px;
-    margin-top: 8px;
-    margin-left: 20px;
-}
-#profile-p {
-    float: right;
-    width: 40px;
-    height: 40px;
-    margin-top: 20px;
-    margin-right: 30px;
-    border-radius: 50%;
-}
-
-.background-body {
-    position: absolute;
     width: 100%;
-    background: linear-gradient(180deg, hsla(184, 66%, 91%, 0.6) 0%, hsla(296, 58%, 85%, 0.6) 80%, hsla(349, 100%, 89%, 0.6) 100%);
+    min-width: 1040px;
+}
+.background-body {
+    width: 100%;
+    min-width: 1040px;
+    height: auto;
 }
 
+
+.top-buttons {
+    margin-left: 120px;
+    margin-right: 120px;
+    margin-top: 55px;
+    min-width: 800px;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    align-items: flex-end;
+}
 .container-pa {
     display: flex;
     flex-flow: row nowrap;
     justify-content: space-between;
     align-items: flex-end;
-    max-width: 460px;
-    margin-left: 120px;
-    margin-top: 55px;
+    width: 460px;
 }
 
 .toggle {
     border-radius: 20px 20px 0 0;
     width: 48%;
-    font-size: 24px;
+    font-size: 22px;
     display: flex;
     align-items: center;
     justify-content: center;
 }
-
-.present-p {
-    height: 60px;
-    background-color: var(--danger-color);
+#present-p, #absent-a {
     color: white;
     cursor: pointer;
+}
+.active-d {
+    height: 60px;
+    background-color: var(--danger-color);
     z-index: 1;
 }
-.absent-a {
+.deactive-d {
     height: 50px;
     background-color: var(--disabled-color);
+}
+.attend-b {
+    height: 50px;
+    width: 200px;
+    background-color: #FD7E14;
     color: white;
     cursor: pointer;
 }
@@ -87,10 +65,60 @@
     margin-right: 120px;
     margin-bottom: 65px;
     background-color: white;
-    border-radius: 0 20px 20px 20px;
+    border-radius: 0 0 20px 20px;
     filter: drop-shadow(3px 3px 20px rgba(0,0,0,0.2));
 }
 
-.about-class {
+#about-class {
     height: 130px;
+    padding: 20px;
+}
+.subject-name-code {
+    width: 600px;
+    margin-left: 30px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    font-size: 20px;
+    font-weight: 500;
+}
+.teacher-name {
+    width: 600px;
+    margin-left: 30px;
+    font-size: 18px;
+}
+.time-period {
+    position: absolute;
+    top: 20px;
+    right: 50px;
+}
+.room-number {
+    position: absolute;
+    top:60px;
+    right: 50px;
+    text-decoration: underline;
+}
+
+#present-table {
+    display: block;
+}
+#absent-table {
+    display: none;
+}
+
+.div-block {
+    height: 30px;
+    background-color: var(--div-color);
+}
+
+.table {
+    max-width: 1000px;
+    width: 90% !important;
+    margin-left: auto;
+    margin-right: auto;
+}
+.table th {
+    font-weight: 600;
+}
+.table th, .table td {
+    padding: 0.55rem !important;;
 }

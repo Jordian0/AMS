@@ -44,8 +44,6 @@ function selectDiv(divId) {
 // Function to fetch data from the API
 const api_url = "http://localhost:63342/ATD/api_files/api/timetable/readtime.php";
 async function getTime() {
-    const container = document.getElementById('container')
-
     // Making an API call (request) and getting the response back
     const response = await fetch(api_url);
     // parsing it to JSON format
@@ -117,6 +115,9 @@ async function getTime() {
                 // Add classname to the inner div
                 timeDuration.classList.remove('inactive-time');
                 timeDuration.classList.add('active-time');
+
+                // Adding animation to active container
+                targetDiv.classList.add('time-an');
             }
         }
     }

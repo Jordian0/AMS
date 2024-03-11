@@ -29,7 +29,7 @@ if(isset($_GET['id'])) {
 
         // rearrange the subject data
         while($row = $data->fetch(PDO::FETCH_OBJ)) {
-            $subject[$row->tid] =[
+            $subject =[
                 'tid' => $row->tid,
                 'stime' => $row->stime,
                 'etime' => $row->etime,

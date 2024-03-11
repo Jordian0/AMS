@@ -1,0 +1,144 @@
+@import "default.css";
+
+.toggle {
+    border-radius: 20px 20px 0 0;
+    width: 48%;
+    font-size: 22px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.atd-a {
+    height: 65px;
+    background-color: var(--danger-color);
+    color: white;
+    cursor: pointer;
+    z-index: 1;
+}
+.login-d {
+    height: 55px;
+    background-color: var(--disabled-color);
+    color: white;
+    cursor: not-allowed;
+}
+
+
+.attend-container {
+    margin: auto;
+    height: 230px;
+    width: 700px;
+    background-color: white;
+    border-radius: 0 0 20px 20px;
+    filter: drop-shadow(3px 3px 20px rgba(0,0,0,0.2));
+}
+.form-attend {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 70px;
+    padding-top: 25px;
+}
+
+.form-group {
+    margin: 0 !important;
+}
+.col-form-label {
+    font-size: 22px !important;
+    width: 100px;
+    height: 55px;
+    margin-right: 20px;
+}
+#sid {
+    padding: 8px;
+    width: 500px;
+    height: 55px;
+    font-size: 22px !important;
+    border-color: var(--border-grey);
+    border-radius: 10px;
+    outline: none;
+}
+#sid:focus {
+    box-shadow: 0 2px 20px 1px rgba(0,0,0,0.02), 0 3px 6px 0 rgba(0,0,0,0.23);
+}
+
+.btn {
+    width: 185px;
+    height: 55px;
+    font-size: 20px !important;
+    border: none;
+}
+.btn:hover {
+    box-shadow: 0 2px 20px 1px rgba(0,0,0,0.1), 0 3px 6px 0 rgba(0,0,0,0.23);
+}
+
+
+.hidden-label {
+    border: 0;
+    padding: 0;
+    margin: 0;
+    position: absolute !important;
+    height: 1px;
+    width: 1px;
+    overflow: hidden;
+}
+#sid {
+    width: 450px !important;
+    font-size: 20px !important;
+}
+.custom-select {
+    height: 50px !important;
+    width: 150px !important;
+    margin-right: 20px;
+    margin-bottom: 4px;
+    font-size: 17px !important;
+    border: none;
+}
+.custom-select::backdrop {
+    box-shadow: 0 2px 20px 1px rgba(0,0,0,0.1), 0 3px 6px 0 rgba(0,0,0,0.23);
+}
+.invalid-feedback {
+    position: absolute;
+    margin-left: 200px !important;
+}
+
+.flex-button {
+    display: flex;
+    width: 620px;
+    justify-content: space-between;
+}
+.sts-btn {
+    background-color: var(--redirect-color);
+    color: white;
+}
+.mrk-btn {
+    background-color: var(--blue);
+    color: white;
+}
+
+
+/* Api data */
+#api-sub-container {
+    margin-top: 30px;
+    display: flex;
+    flex-flow: column nowrap;
+    text-align: center;
+    gap: 5px;
+}
+#api-sub-container > p {
+    margin: 0;
+}
+.time-heading {
+    font-size: 20px;
+    font-weight: 400;
+}
+.start-end-time, .course-with-id-grp, .room-code {
+    font-size: 16px;
+}
+.faculty-name {
+    font-weight: 500;
+    font-size: 18px;
+}
+.room-code {
+    text-decoration: underline;
+}

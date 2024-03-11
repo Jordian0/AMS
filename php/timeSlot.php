@@ -7,9 +7,11 @@ error_reporting(E_ALL);
 
 if(isset($_POST['select'])) {
     $times = isset($_POST['selectedTime']) ? $_POST['selectedTime'] : '';
-    echo "Selected div: " . $times;
+//    echo "Selected div: " . $times;
 
     if($times) {
+        // get last digit to get time id.
+        $_SESSION['time-id'] = substr($times, -1);
         header("Location: ../src/attend.php");
         exit;
     }

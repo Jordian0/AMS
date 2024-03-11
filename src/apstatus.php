@@ -1,3 +1,17 @@
+<?php
+session_start();
+
+// If user logged out and still trying to access the page
+if(!isset($_SESSION['UserData'])){
+    header("location: index.php");
+    exit;
+}
+
+if(isset($_SESSION['time-id'])) {
+    $timeid = $_SESSION['time-id'];
+}
+?>
+
 <!doctype html>
 <html lang="en">
 <head>
@@ -11,58 +25,110 @@
 </head>
 <body>
     <div class="headerd">
-        <!--        <img id="icon-su" src="../media/images/icon.png" alt="Shoolini University">-->
+        <img id="icon-su" src="../media/images/icon.png" alt="Shoolini University">
         <a href="/php/logout.php" >
             <img id="profile-p" class="profile-img" src="../media/images/sage.png" alt="Profile">
         </a>
     </div>
 
     <div class="background-body">
-        <div class="container-pa">
-            <div class="present-p toggle">Present</div>
-            <div class="absent-a toggle">Absent</div>
+        <div class="top-buttons">
+            <div class="container-pa">
+                <div class="toggle active-d" id="present-p" onclick="toggleDivs('present-p')">Present</div>
+                <div class="toggle deactive-d div-button-hover" id="absent-a" onclick="toggleDivs('absent-a')">Absent</div>
+            </div>
+
+            <div class="toggle attend-b div-button-hover" onclick="redirectToPage()">Mark</div>
         </div>
 
         <div class="atstatus-container">
-            <div class="about-class">
-                this is the body
+            <div id="about-class">
+                <p class="subject-name-code">Subject Name</p>
+                <p class="teacher-name">Teacher</p>
+                <p class="time-period">10:0 - 11:00</p>
+                <p class="room-number">G-230</p>
             </div>
 
-            <table class="table table-bordered">
-                <thead class="thead-blue">
-                    <tr>
-                        <th scope="col">#</th>
-                        <th scope="col">First</th>
-                        <th scope="col">Last</th>
-                        <th scope="col">Handle</th>
-                    </tr>
-                </thead>
-                <tbody>
-                <tr>
-                    <th scope="row">1</th>
-                    <td>Mark</td>
-                    <td>Otto</td>
-                    <td>@mdo</td>
-                </tr>
-                <tr>
-                    <th scope="row">2</th>
-                    <td>Jacob</td>
-                    <td>Thornton</td>
-                    <td>@fat</td>
-                </tr>
-                <tr>
-                    <th scope="row">3</th>
-                    <td>Larry</td>
-                    <td>The Bird</td>
-                    <td>@twitter</td>
-                </tr>
-                </tbody>
-            </table>
+            <div id="present-table">
+                <div class="div-block"></div>
+                <table class="table table-bordered table-hover">
+                    <thead class="thead-light">
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">First</th>
+                            <th scope="col">Last</th>
+                            <th scope="col">Handle</th>
+                        </tr>
+                    </thead>
+                    <tbody class="table-hover">
+                        <tr>
+                            <th scope="row">1</th>
+                            <td>Mark</td>
+                            <td>Otto</td>
+                            <td>@mdo</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">2</th>
+                            <td>Jacob</td>
+                            <td>Thornton</td>
+                            <td>@fat</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">3</th>
+                            <td>Larry</td>
+                            <td>The Bird</td>
+                            <td>@twitter</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div id="absent-table">
+                <div class="div-block"></div>
+                <table class="table table-bordered table-hover">
+                    <thead class="thead-light">
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">absent first</th>
+                            <th scope="col">absent last</th>
+                            <th scope="col">roll no</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th scope="row">1</th>
+                            <td>Mark</td>
+                            <td>Otto</td>
+                            <td>@mdo</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">2</th>
+                            <td>Jacob</td>
+                            <td>Thornton</td>
+                            <td>@fat</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">3</th>
+                            <td>Larry</td>
+                            <td>The Bird</td>
+                            <td>@twitter</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
 
-    
-    <script src="../js/timetable.js"></script>
+
+    <script>
+        const timeid = <?php echo $timeid ?>;
+        // console.log(timeid);
+    </script>
+    <script src="../js/apstatus.js"></script>
+    <script src="../js/subject.js"></script>
+    <script>
+        getSubject('status');       // calling function
+    </script>
 
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.3/dist/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>

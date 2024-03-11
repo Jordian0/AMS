@@ -13,12 +13,12 @@ unset($_SESSION['error_login']);
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>ATD</title>
-    <link rel="stylesheet" href="style/log_att_style.css">
+    <link rel="stylesheet" href="style/login_style.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 </head>
 <body>
     <div class="headerd">
-<!--        <img id="icon-su" src="./media/images/icon.png" alt="Shoolini University">-->
+        <img id="icon-su" src="./media/images/icon.png" alt="Shoolini University">
     </div>
     <div class="background-body">
         <div class="container-la">
@@ -34,7 +34,7 @@ unset($_SESSION['error_login']);
                 </div>
                 <div class="form-group">
                     <label for="otp" class="col-form-label">OTP:</label>
-                    <input type="text" inputmode="numeric" name="otp" id="otp" maxlength="6" placeholder="Enter OTP"/>
+                    <input type="password" inputmode="numeric" name="otp" id="otp" maxlength="6" placeholder="Enter OTP"/>
                     <div class="invalid-feedback" id="error_otp">
                         Enter 6 digits!
                     </div>
