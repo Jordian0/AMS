@@ -14,6 +14,7 @@ function validateForm() {
         // Changing color back
         sidInput.style.cssText = 'border-color: rgba(0, 0, 0, 0.4) ';
         sidInHelp.style.cssText = 'display: none';
+        return true;
     }
 }
 
@@ -23,6 +24,7 @@ const weekday = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Sa
 const d = new Date();
 let day = weekday[d.getDay()];
 document.getElementById('cur-day').innerHTML = day;
+
 
 // Function to redirect to another page
 function redirectToPage() {

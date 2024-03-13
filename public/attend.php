@@ -3,7 +3,7 @@ session_start();
 
 // If user logged out and still trying to access the page
 if(!isset($_SESSION['UserData'])){
-    header("location: index.src");
+    header("location: ./login.php");
     exit;
 }
 
@@ -22,6 +22,8 @@ if(isset($_SESSION['time-id'])) {
     <link rel="stylesheet" href="../style/login_style.css">
     <link rel="stylesheet" href="../style/attend_style.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <script type="module" src="../js/api/subject.js"></script>
+
     </head>
 <body>
     <div class="headerd">
@@ -36,10 +38,10 @@ if(isset($_SESSION['time-id'])) {
             <div class="atd-a toggle">ATD</div>
         </div>
         <div class="attend-container">
-            <form action="#" name="Attend" class="form-attend" onsubmit="validateForm()">
+            <form action="#" method="post" name="Attend" class="form-attend" onsubmit="return validateForm()">
                 <div class="form-group">
                     <label for="course-select"></label>
-                    <select class="custom-select" id="course-select">
+                    <select class="custom-select" name="course-select" id="course-select">
                         <option selected>All</option>
                         <option value="1">MCA AI</option>
                         <option value="2">MCA CC</option>
@@ -75,10 +77,11 @@ if(isset($_SESSION['time-id'])) {
         const timeid = <?php echo $timeid ?>;
         // console.log(timeid);
     </script>
-    <script src="../js/attend.js"></script>
-    <script src="../js/subject.js"></script>
-    <script>
-        getSubject('attend');       // calling function
+    <script type="text/javascript" src="../js/attend.js"></script>
+    <script src="../js/api/subject.js"></script>
+    <script src="../js/api/apiEndpoints.js"></script>
+    <script type="module">
+        getSubject('attend');
     </script>
 
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>

@@ -39,3 +39,7 @@ function redirectToPage() {
     window.location.href = '../public/attend.php';
 }
 
+
+// calling the api function
+// import { getSubject } from "./subject.js";
+// getSubject('status');       // calling function

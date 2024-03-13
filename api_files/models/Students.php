@@ -1,11 +1,18 @@
 <?php
 
-// Class to get student data from database
+use OpenApi\Annotations as OA;
 
+// Class to get student data from database
 error_reporting(E_ALL);
 ini_set('display_error', 1);
 
-// class for timetable table
+
+/**
+ * @OA\Info(title="PDO REST API", version="1.0")
+ */
+
+
+// class for students table
 class Students {
     // timetable properties
     public $course_id;
@@ -22,6 +29,35 @@ class Students {
 //        echo "Success!";
     }
 
+    /**
+     * @OA\Get(
+     *     path="/ATD/api_files/controller/students/getstudents.php",
+     *     summary="Method to get students data from particular course and from particular group",
+     *     tags={"Students"},
+     *     @OA\Parameter(
+     *         name="course",
+     *         in="query",
+     *         required=true,
+     *         description="course id passed to get the students data who are registered for the course",
+     *         @OA\Schema(
+     *             type="string"
+     *         )
+     *     ),
+     *     @OA\Parameter(
+     *         name="group",
+     *         in="query",
+     *         required=false,
+     *         description="group passed to get the students with specific course and belongs to particular group",
+     *         @OA\Schema(
+     *             type="char"
+     *         )
+     *     ),
+     *     @OA\Response(resposne="200", description="Successful"),
+     *     @OA\Response(response="404", description="Not Found")
+     * )
+     */
+
+    // Method to get students data who studies particular course
     public function readStudentCourse($course) {
         $this->course_id = $course;
 //        echo $this->course_id;
@@ -60,7 +96,7 @@ class Students {
         return $students;
     }
 
-    // method to read all the rows from the database
+    // method to read students data who study particular course and form particular group
     public function readStudentsCourseGroup($course, $group) {
         $this->course_id = $course;
         $this->grp = $group;

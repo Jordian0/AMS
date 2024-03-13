@@ -71,7 +71,7 @@
     height: 55px;
     margin-right: 20px;
 }
-#uid, #otp {
+#uid, #pswd {
     padding: 8px;
     width: 500px;
     height: 55px;
@@ -80,10 +80,12 @@
     border-radius: 10px;
     outline: none;
 }
-#uid:focus, #otp:focus {
+#uid:focus, #pswd:focus {
     box-shadow: 0 2px 20px 1px rgba(0,0,0,0.02), 0 3px 6px 0 rgba(0,0,0,0.23);
 }
-#error_otp {
+
+
+#error_pswd {
     position: absolute;
     margin-top: 10px;
     margin-left: 120px !important;

@@ -1,9 +1,17 @@
 <?php
 
+use OpenApi\Annotations as OA;
+
 error_reporting(E_ALL);
 ini_set('display_error', 1);
 
-// class for subjects table
+
+/**
+ * @OA\Info(title="PDO REST API", version="1.0")
+ */
+
+
+// class for timetable table
 class TimeSlot {
 
     // Subjects properties
@@ -32,6 +40,15 @@ class TimeSlot {
 //        echo "Success!";
     }
 
+    /**
+     * @OA\Get(
+     *     path="/ATD/api_files/controller/timetable/readtime.php",
+     *     summary="Gets all the classes that are today",
+     *     tags={"Time table"},
+     *     @OA\Response(response="200", description="Successful"),
+     *     @OA\Response(response="404", description="Not Found!")
+     * )
+     */
     // Method to read all the saved subjects from database
     public function readTable() {
         $today = date('l');
@@ -65,6 +82,24 @@ class TimeSlot {
         return $times;
     }
 
+    /**
+     * @OA\Get(
+     *     path="/ATD/api_files/controller/timetable/readsubject.php",
+     *     summary="Method to read a single subject info",
+     *     tags={"Time table"},
+     *     @OA\Parameter(
+     *          name="id",
+     *          in="query",
+     *          required=true,
+     *          description="Pass the id to get the info about the particular class in a day",
+     *          @OA\Schema(
+     *              type="string"
+     *          )
+     *     ),
+     *     @OA\Response(response="200", description="Successful"),
+     *     @OA\Response(response="404", description="Not Found!")
+     * )
+     */
     // Method to read one subjects from database
     public function readSubject($tid) {
         $today = date('l');

@@ -1,14 +1,10 @@
-const inputs = document.getElementById("otp");
+const inputs = document.getElementById("pswd");
 inputs.addEventListener("input", function (e) {
     const target = e.target;
     let val = target.value;
-    val = val.replace(/\D/g, '');
+    val = val.replace(/\s/g, '');
     target.value = val;
 
-    if (isNaN(val)) {
-        target.value = "";
-        return;
-    }
     if (val !== "") {
         const next = target.nextElementSibling;
         if (next) {
@@ -34,8 +30,8 @@ inputs.addEventListener("keypress", function (e) {
 // validating user data using js
 function validateForm() {
     let userIdInput = document.getElementById('uid');
-    let userOTPInput = document.getElementById('otp');
-    let errorOTPInput = document.getElementById('error_otp');
+    let userPswdInput = document.getElementById('pswd');
+    let errorPswdInput = document.getElementById('error_pswd');
     let invalidLoginMessage = document.getElementById('error_login');
 
     // Check if name field is entered or not
@@ -49,18 +45,18 @@ function validateForm() {
         userIdInput.style.cssText = 'border-color: rgba(0, 0, 0, 0.4) ';
     }
 
-    // Check if the length of the otp input is not equal to 6
-    if (userOTPInput.value.length !== 6) {
+    // Check if the length of the password input is not equal to 8
+    if (userPswdInput.value.length < 8) {
         // Show the enrollment help message
-        userOTPInput.style.setProperty('border-color', 'red');
-        errorOTPInput.style.cssText = 'display: block';
+        userPswdInput.style.setProperty('border-color', 'red');
+        errorPswdInput.style.cssText = 'display: block';
         invalidLoginMessage.style.cssText = 'display:none';
         // Prevent form submission
         return false;
     } else {
         // Hide the enrollment help message
-        userOTPInput.style.setProperty('border-color', 'rgba(0, 0, 0, 0.4)');
-        errorOTPInput.style.cssText = 'display: none';
+        userPswdInput.style.setProperty('border-color', 'rgba(0, 0, 0, 0.4)');
+        errorPswdInput.style.cssText = 'display: none';
         // Allow form submission
         return true;
     }
@@ -73,8 +69,6 @@ if(login_error) {
     let errorMessage = document.getElementById('error_login');
     errorMessage.style.cssText = 'display: inline;'
 }
-
-
 
 
 

@@ -18,6 +18,33 @@
     min-height: 810px;
 }
 
+.modal-launch {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    text-decoration: underline;
+    opacity: 50%;
+    cursor: pointer;
+}
+.modal-launch:hover {
+    opacity: 100%;
+}
+.modal-open {
+    overflow: auto !important;          /* Show the scrollbar */
+}
+.modal-header, .modal-body, .modal-footer {
+    padding: 14px !important;
+}
+.modal-title {
+    font-weight: 500;
+}
+.modal-ul {
+    list-style-position: inside;
+}
+.modal-ul li {
+    margin-bottom: 1px;
+}
+
 
 .time-heading {
     margin-top: 210px;

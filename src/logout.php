@@ -8,7 +8,7 @@ if (isset($_SESSION)) {
 }
 
 // Redirect to login page
-header("Location: ../ATD/index.php");
+header("Location: ../ATD/public/login.php");
 
 exit;
 ?>

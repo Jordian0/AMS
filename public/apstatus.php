@@ -3,7 +3,7 @@ session_start();
 
 // If user logged out and still trying to access the page
 if(!isset($_SESSION['UserData'])){
-    header("location: index.src");
+    header("location: ./login.php");
     exit;
 }
 
@@ -125,9 +125,10 @@ if(isset($_SESSION['time-id'])) {
         // console.log(timeid);
     </script>
     <script src="../js/apstatus.js"></script>
-    <script src="../js/subject.js"></script>
+    <script src="../js/api/subject.js"></script>
+    <script src="../js/api/apiEndpoints.js"></script>
     <script>
-        getSubject('status');       // calling function
+        getSubject('status');
     </script>
 
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>

@@ -3,7 +3,7 @@ session_start();
 
 // If user logged out and still trying to access the page
 if(!isset($_SESSION['UserData'])) {
-    header("location: index.src");
+    header("location: ./login.php");
     exit;
 }
 ?>
@@ -28,6 +28,34 @@ if(!isset($_SESSION['UserData'])) {
     </div>
 
     <div class="background-body">
+
+        <!-- Button trigger modal -->
+        <p class="modal-launch" data-toggle="modal" data-target="#exampleModalCenter">
+            How it words?
+        </p>
+        <!-- Modal -->
+        <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalCenterTitle">Website Overview</h5>
+                    </div>
+                    <div class="modal-body">
+                        <p>Welcome to our platform! Below is a helpful guide to navigate through our website's key features:</p>
+                        <ul class="modal-ul">
+                            <li><u>Selecting Class Time Slots</u>: On the "Select Time Slot" page, you can choose the desired time slot for your class. Simply click on the available slots to proceed.</li>
+                            <li><u>Marking Attendance</u>: In the "Mark Attendance" section, you have the option to mark attendance for students. Choose the course or select the "All" option to mark attendance for all students. Follow the prompts to complete the process.</li>
+                            <li><u>View Attendance Status</u>: Navigate to the "Attendance Status" page to view the attendance status of students. You'll see lists of present and absent students. Use the provided options to export data to Google Sheets if needed.
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <h3 class="time-heading" id="cur-day"></h3>
         <div class="invalid-feedback" id="select-time">
             Please choose a time slot.
@@ -117,7 +145,9 @@ if(!isset($_SESSION['UserData'])) {
     </div>
 
 
-    <script src="../js/timetable.js"></script>
+    <script src="../js/timet.js"></script>
+    <script src="../js/api/apiEndpoints.js"></script>
+    <script src="../js/api/timetable.js"></script>
 
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.3/dist/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
