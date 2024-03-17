@@ -83,16 +83,6 @@
     box-shadow: 0 2px 20px 1px rgba(0,0,0,0.02), 0 3px 6px 0 rgba(0,0,0,0.23);
 }
 
-.btn {
-    width: 185px;
-    height: 55px;
-    font-size: 20px !important;
-    border: none;
-}
-.btn:hover {
-    box-shadow: 0 2px 20px 1px rgba(0,0,0,0.1), 0 3px 6px 0 rgba(0,0,0,0.23);
-}
-
 
 .hidden-label {
     border: 0;

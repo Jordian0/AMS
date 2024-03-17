@@ -61,7 +61,7 @@ we've outlined the folder structure to provide a clear overview of how the proje
 │   └── timet.php
 ├── README.md
 ├── sql
-│   ├── attend_schema.sql
+│   ├── attend_schema_data.sql
 │   └── insert_data.sql
 ├── src
 │   ├── logout.php

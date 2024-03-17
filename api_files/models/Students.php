@@ -4,7 +4,7 @@ use OpenApi\Annotations as OA;
 
 // Class to get student data from database
 error_reporting(E_ALL);
-ini_set('display_error', 1);
+ini_set('display_errors', 1);
 
 
 /**
@@ -16,7 +16,12 @@ ini_set('display_error', 1);
 class Students {
     // timetable properties
     public $course_id;
+    public $name;
+    public $stid;
     public $grp;
+    public $ai = 'mca_ai';
+    public $cc = 'mca_cc';
+    public $dop = 'mca_dop';
 
     // Database Data
     private $connection;
@@ -49,12 +54,12 @@ class Students {
      *         required=false,
      *         description="group passed to get the students with specific course and belongs to particular group",
      *         @OA\Schema(
-     *             type="char"
+     *             type="string"
      *         )
      *     ),
-     *     @OA\Response(resposne="200", description="Successful"),
+     *     @OA\Response(response="200", description="Successful"),
      *     @OA\Response(response="404", description="Not Found")
-     * )
+     * )	
      */
 
     // Method to get students data who studies particular course
@@ -68,21 +73,21 @@ class Students {
             FROM
                 '.$this->table.'
             JOIN
-                mca_cc ON sub_course.course = \'mca_cc\'
+                '.$this->cc.' ON sub_course.course = \'mca_cc\'
             WHERE
                 course_id =?
             UNION ALL
             SELECT *
-                FROM sub_course
+                FROM '.$this->table.'
             JOIN
-                mca_dop ON sub_course.course = \'mca_dop\'
+                '.$this->dop.' ON sub_course.course = \'mca_dop\'
             WHERE
                 course_id =?
             UNION ALL
             SELECT *
-                FROM sub_course
+                FROM '.$this->table.'
             JOIN
-                mca_ai ON sub_course.course = \'mca_ai\'
+                '.$this->ai.' ON sub_course.course = \'mca_ai\'
             WHERE
                 course_id =?
         ';
@@ -109,21 +114,21 @@ class Students {
             FROM
                 '.$this->table.' sub_course
             JOIN
-                mca_cc ON sub_course.course = \'mca_cc\'
+                '.$this->cc.' ON sub_course.course = \'mca_cc\'
             WHERE
                 course_id=? AND grp=?
             UNION ALL
             SELECT *
-                FROM sub_course
+                FROM '.$this->table.' sub_course
             JOIN
-                mca_dop ON sub_course.course = \'mca_dop\'
+                '.$this->dop.' ON sub_course.course = \'mca_dop\' 
             WHERE
                 course_id=? AND grp=?
             UNION ALL
             SELECT *
-                FROM sub_course
+                FROM '.$this->table.' sub_course
             JOIN
-                mca_ai ON sub_course.course = \'mca_ai\'
+                '.$this->ai.' ON sub_course.course = \'mca_ai\'
             WHERE
                 course_id=? AND grp=?
         ';
@@ -138,5 +143,204 @@ class Students {
         $students->execute();
 
         return $students;
+    }
+
+
+    /**
+     * @OA\Post(
+     *     path="/ATD/api_files/controller/students/createstudent.php",
+     *     summary="Method to insert a student info",
+     *     tags={"Students"},
+     *     @OA\RequestBody(
+     *         @OA\MediaType(
+     *             mediaType="multipart/form-data",
+     *             @OA\Schema(
+     *                 @OA\Property(
+     *                     property="course",
+     *                     type="string"
+     *                 ),
+     *                 @OA\Property(
+     *                     property="name",
+     *                     type="string",
+     *                 ),
+     *                 @OA\Property(
+     *                     property="student_id",
+     *                     type="string",
+     *                 ),
+     *                 @OA\Property(
+     *                     property="group",
+     *                     type="string",
+     *                 ),
+     *             ),
+     *         ),
+     *         @OA\MediaType(
+     *             mediaType="json",
+     *             @OA\Schema(
+     *                 @OA\Property(
+     *                     property="course",
+     *                     type="string",
+     *                 ),
+     *                 @OA\Property(
+     *                     property="name",
+     *                     type="string"
+     *                 ),
+     *                 @OA\Property(
+     *                     property="student_id",
+     *                     type="string"
+     *                 ),
+     *                 @OA\Property(
+     *                     property="group",
+     *                     type="string"
+     *                 ),
+     *             ),
+     *         )
+     *     ),
+     *     @OA\Response(response="200", description="Successful"),
+     *     @OA\Response(response="404", description="Not Found")
+     * )
+     */
+    // Method to post the data into the student database
+    public function createStudent($params): bool
+    {
+        try {
+            // assigning values
+            $this->course_id = $params['course'];
+            $this->name = $params['name'];
+            $this->stid = $params['student_id'];
+            $this->grp = $params['group'];
+
+            // Query to store new student info in database
+            $query = '
+                INSERT INTO '.$this->course_id.'
+                    SET
+                    name=:name,
+                    stid=:studentid,
+                    grp=:group
+            ';
+
+            $students = $this->connection->prepare($query);
+
+            // binding values
+            $students->bindValue('name', $this->name, PDO::PARAM_STR);
+            $students->bindValue('studentid', $this->stid, PDO::PARAM_STR);
+            $students->bindValue('group', $this->grp, PDO::PARAM_STR);
+
+            // executing
+            if($students->execute())
+                return true;
+
+            return false;
+        }
+        catch(PDOException $e) {
+            echo $e->getMessage();
+            return false;
+        }
+    }
+
+
+    /**
+     * @OA\Delete(
+     *     path="/ATD/api_files/controller/students/deletestudent.php",
+     *     summary="Method to destroy student info",
+     *     tags={"Students"},
+     *     @OA\RequestBody(
+     *         @OA\MediaType(
+     *             mediaType="multipart/form-data",
+     *             @OA\Schema(
+     *                 @OA\Property(
+     *                     property="student_id",
+     *                     type="string",
+     *                     description="Student id whose data is to be deleted",
+     *                      required=true
+     *                 ),
+     *                 @OA\Property(
+     *                     property="course",
+     *                     type="string",
+     *                     description="Optional: course which student belongs to",
+     *                 )
+     *             ),
+     *         ),
+     *          @OA\MediaType(
+     *              mediaType="json",
+     *              @OA\Schema(
+     *                  @OA\Property(
+     *                      property="student_id",
+     *                      type="string",
+     *                      description="Student id whose data is to be deleted",
+     *                  ),
+     *                  @OA\Property(
+     *                      property="course",
+     *                      type="string",
+     *                      description="Optional: course which student belongs to",
+     *                  ),
+     *              ),
+     *          ),
+     *     ),
+     *     @OA\Response(response="200", description="Successful"),
+     *     @OA\Response(response="404", description="Not Found")
+     * )
+     */
+    // Method to delete student data from student table, student course  provided
+    public function destroyStudentCourse($params): bool
+    {
+        try {
+            // assigning values
+            $this->course_id = $params['course'];
+            $this->stid = $params['student_id'];
+
+            // Query for updating existing record
+            $query = '
+                DELETE FROM '.$this->course_id.'
+                WHERE stid=:studentid
+            ';
+
+            $students = $this->connection->prepare($query);
+
+            // binding values
+            $students->bindValue('studentid', $this->stid, PDO::PARAM_STR);
+
+            // executing query
+            if($students->execute() && $students->rowCount()>0) {
+                return true;
+            }
+
+            return false;
+        }
+        catch(PDOException $e) {
+            echo $e->getMessage();
+            return false;
+        }
+    }
+
+    // Method to delete student data from student table
+    public function destroyStudent($params): bool
+    {
+        try {
+            // assigning value
+            $this->stid = $params['student_id'];
+
+            // Query for updating existing record
+            $query = '
+                    DELETE FROM '.$this->ai.' WHERE stid=:studentid
+                    OR stid IN (SELECT stid FROM '.$this->cc.' WHERE stid=:studentid)
+                    OR stid IN (SELECT stid FROM '.$this->dop.' WHERE stid=:studentid)
+            ';
+
+            $students = $this->connection->prepare($query);
+
+            // binding values
+            $students->bindValue('studentid', $this->stid, PDO::PARAM_STR);
+
+            // executing query
+            if($students->execute() && $students->rowCount()) {
+                return true;
+            }
+
+            return false;
+        }
+        catch(PDOException $e) {
+            echo $e->getMessage();
+            return false;
+        }
     }
 }

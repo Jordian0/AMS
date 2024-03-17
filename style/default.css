@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800&display=swap');
 
 :root {
-    --blue: #0044CD;
+    --blue: #007bff;
     --border-grey: rgba(0, 0, 0, 0.4);
     --danger-color: #E33535;
     --disabled-color: #979797;
@@ -50,6 +50,22 @@
     background: linear-gradient(180deg, hsla(184, 66%, 91%, 0.6) 0%, hsla(296, 58%, 85%, 0.6) 80%, hsla(349, 100%, 89%, 0.6) 100%);
 }
 
+
+.btn {
+    width: 185px;
+    height: 55px;
+    font-size: 20px !important;
+    border: none;
+}
+.btn:hover {
+    box-shadow: 0 2px 20px 1px rgba(0,0,0,0.1), 0 3px 6px 0 rgba(0,0,0,0.23);
+}
+.sub-btn {
+    background-color: var(--blue);
+    color: white;
+    align-self: end;
+    margin-right: 35px;
+}
 
 .div-button-hover:hover {
     filter: drop-shadow(0px -3px 5px rgba(0,0,0,0.2));

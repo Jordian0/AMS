@@ -46,11 +46,7 @@ function updateApstatusPage(data) {
     const {stime, etime, course_id, course, faculty, grp, room_no} = data;
 
     // Assigning values to variables
-    let group;
-    if (grp === 'a')
-        group = 'A';
-    else if (grp === 'b')
-        group = 'B';
+    let group = grp.toUpperCase();
 
     // setting up query selectors to target apstatus html page elements
     const scontainer = document.getElementById('about-class');

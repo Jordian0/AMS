@@ -1,6 +1,6 @@
 <?php
 
 // Executing the PHP page
-require 'public/login.php';
+header('Location: ./public/login.php');
 
 ?>
