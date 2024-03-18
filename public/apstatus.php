@@ -1,5 +1,15 @@
 <?php
-    require_once '../src/unauthenticated.php"';
+session_start();
+
+// If user logged out and still trying to access the page
+if(!isset($_SESSION['UserData'])){
+    header("location: ./login.php");
+    exit;
+}
+
+if(isset($_SESSION['time-id'])) {
+    $timeid = $_SESSION['time-id'];
+}
 ?>
 
 <!doctype html>
@@ -105,6 +115,10 @@
                         </tr>
                     </tbody>
                 </table>
+            </div>
+
+            <div class="ex-btn-box">
+                <div class="select-t toggle hvr-float" onclick="redirectToSubj()">Subject</div>
             </div>
         </div>
     </div>

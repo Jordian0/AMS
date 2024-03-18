@@ -1,5 +1,11 @@
 <?php
-    require_once '../src/unauthenticated.php"';
+session_start();
+
+// If user logged out and still trying to access the page
+if(!isset($_SESSION['UserData'])) {
+    header("location: ./login.php");
+    exit;
+}
 ?>
 
 <!doctype html>

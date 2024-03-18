@@ -40,6 +40,13 @@ function redirectToPage() {
 }
 
 
+// Function to redirect to another page
+function redirectToSubj() {
+    // Redirect the user to subject page
+    window.location.href = '../public/timet.php';
+}
+
+
 // calling the api function
 // import { getSubject } from "./subject.js";
 // getSubject('status');       // calling function

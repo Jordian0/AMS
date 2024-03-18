@@ -1,5 +1,15 @@
 <?php
-    require_once '../src/unauthenticated.php"';
+session_start();
+
+// If user logged out and still trying to access the page
+if(!isset($_SESSION['UserData'])){
+    header("location: ./login.php");
+    exit;
+}
+
+if(isset($_SESSION['time-id'])) {
+    $timeid = $_SESSION['time-id'];
+}
 ?>
 
 <!doctype html>
@@ -48,9 +58,12 @@
                     <button type="submit" class="mrk-btn btn">Mark</button>
                 </div>
             </form>
+
+            <div class="ex-btn-box">
+                <div class="select-t toggle hvr-float" onclick="redirectToSubj()">Subject</div>
+            </div>
         </div>
 
-<!--        <div class="select-t toggle">Subject</div>-->
 
 
         <div id="api-sub-container">
