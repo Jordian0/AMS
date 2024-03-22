@@ -35,7 +35,7 @@ if(isset($_GET['id'])) {
                 'etime' => $row->etime,
                 'course_id' => $row->course_id,
                 'course' => $row->course,
-                'faculty' => $row->faculty,
+                'faculty' => $row->name,
                 'grp' => $row->grp,
                 'room_no' => $row->room_no,
             ];

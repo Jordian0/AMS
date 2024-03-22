@@ -62,7 +62,7 @@ class TimeSlot {
                 timeframe.etime,
                 tt.course_id,
                 subjects.course_name as course,
-                subjects.faculty,
+                faculty.name,
                 tt.grp,
                 tt.room_no
             FROM
@@ -71,6 +71,8 @@ class TimeSlot {
                 timeframe ON tt.tid = timeframe.tid
             LEFT JOIN
                 subjects ON tt.course_id = subjects.course_id
+            LEFT JOIN
+                faculty ON subjects.fid = faculty.fid
             WHERE
                 tt.day = ?
         ';
@@ -114,7 +116,7 @@ class TimeSlot {
                 timeframe.etime,
                 tt.course_id,
                 subjects.course_name as course,
-                subjects.faculty,
+                faculty.name,
                 tt.grp,
                 tt.room_no
             FROM
@@ -123,6 +125,8 @@ class TimeSlot {
                 timeframe ON tt.tid = timeframe.tid
             LEFT JOIN
                 subjects ON tt.course_id = subjects.course_id
+            LEFT JOIN
+                faculty ON subjects.fid = faculty.fid
             WHERE
                 tt.day = ? AND tt.tid=?
             LIMIT 0,1

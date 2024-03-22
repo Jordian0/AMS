@@ -26,7 +26,7 @@ unset($_SESSION['error_login']);
         <div class="atd-d toggle">ATD</div>
     </div>
     <div class="login-container">
-        <form action="../src/validateLogin.php" method="post" name="Login" onsubmit="return validateForm()"
+        <form action="../src/validateLogin.php" method="post" name="login" onsubmit="return validateForm()"
               class="form-login">
             <div class="form-group">
                 <label for="uid" class="col-form-label">User ID:</label>

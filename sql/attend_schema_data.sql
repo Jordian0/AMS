@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Mar 11, 2024 at 07:16 PM
+-- Generation Time: Mar 22, 2024 at 07:59 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -24,13 +24,38 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `faculty`
+--
+
+CREATE TABLE `faculty` (
+                           `name` varchar(50) NOT NULL,
+                           `fid` varchar(15) NOT NULL,
+                           `password` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `faculty`
+--
+
+INSERT INTO `faculty` (`name`, `fid`, `password`) VALUES
+                                                      ('Shrawan Kumar', 'FTA06184040', '$2y$10$rU4VVhtTaVV0ryCMi6v4NO3QsN5ojCJiQFversfSiXa.pMiZa7aEW'),
+                                                      ('Nitesh Sharma', 'FTA07881168', '$2y$10$WCdc6o6k8TkAZDzUwlIWLOkV1huW0t.6.8BMIXUEefTQHcDF6oXCS'),
+                                                      ('Kritika Rana', 'FTA19241699', '$2y$10$NzBq4bfO0fNbf31QXkkqOuigRXB5FuINom9HfwCFpTsUj4yV4G5Im'),
+                                                      ('Arvind Sharma', 'FTA31143777', '$2y$10$QefN6wljSg2mFxATiBH1HuEFxmqReDzK.YfhaKHhO2w27yDdFipCm'),
+                                                      ('Ahmad Salehi', 'FTA39670625', '$2y$10$SW7IEpkV.VA7T6RspQD0r.2UDZJYDAW2LdyYnsG/jYYP5.padUAui'),
+                                                      ('Bharti Thakur', 'FTA49848913', '$2y$10$6xUTyt2LzZCEnZLsflWh1upkbmgjoF6xl6q63RuXZUPovplqPrsma'),
+                                                      ('Sonia', 'FTA56190528', '$2y$10$n7WxqrB48d5VotjU0CIWL.D8KVd2zlCOz9qTwsejO1PxzQZS4GWGC');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `mca_ai`
 --
 
 CREATE TABLE `mca_ai` (
                           `name` varchar(50) NOT NULL,
                           `stid` varchar(15) NOT NULL,
-                          `grp` char(1) NOT NULL
+                          `grp` varchar(5) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -46,6 +71,8 @@ INSERT INTO `mca_ai` (`name`, `stid`, `grp`) VALUES
                                                  ('Rajnish Das', 'PGD202318904', 'b'),
                                                  ('Sudhir Begam', 'PGD202325461', 'b'),
                                                  ('Agni Sharma', 'PGD202325857', 'b'),
+                                                 ('Random boy', 'PGD202347892', 'a'),
+                                                 ('Rajat Rana', 'PGD202367678', 'A'),
                                                  ('Ankit Gadhavi', 'PGD202387566', 'b'),
                                                  ('Govind Choudhary', 'PGD202399624', 'b');
 
@@ -58,7 +85,7 @@ INSERT INTO `mca_ai` (`name`, `stid`, `grp`) VALUES
 CREATE TABLE `mca_cc` (
                           `name` varchar(50) NOT NULL,
                           `stid` varchar(15) NOT NULL,
-                          `grp` char(1) NOT NULL
+                          `grp` varchar(5) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -86,7 +113,7 @@ INSERT INTO `mca_cc` (`name`, `stid`, `grp`) VALUES
 CREATE TABLE `mca_dop` (
                            `name` varchar(50) NOT NULL,
                            `stid` varchar(15) NOT NULL,
-                           `grp` char(1) NOT NULL
+                           `grp` varchar(5) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -113,25 +140,24 @@ INSERT INTO `mca_dop` (`name`, `stid`, `grp`) VALUES
 
 CREATE TABLE `subjects` (
                             `course_id` varchar(20) NOT NULL,
-                            `course_name` varchar(150) NOT NULL,
-                            `faculty` varchar(100) NOT NULL
+                            `course_name` varchar(150) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `subjects`
 --
 
-INSERT INTO `subjects` (`course_id`, `course_name`, `faculty`) VALUES
-                                                                   ('CSU1290', 'Web Technology Programming', 'Nitesh Sharma'),
-                                                                   ('CSU1290P', 'Web Technology Programming Lab', 'Nitesh Sharma'),
-                                                                   ('CSU1292', 'Advance Theory of Automata', 'Sonia'),
-                                                                   ('CSU1293', 'Design and Analysis of Algorithm', 'Arvind Sharma'),
-                                                                   ('CSU1293P', 'Design and Analysis of Algorithm Lab', 'Arvind Sharma'),
-                                                                   ('CSU1294', 'Operating System Concepts', 'Bharti Thakur'),
-                                                                   ('CSU1294P', 'Operating System Concepts Lab', 'Bharti Thakur'),
-                                                                   ('CSU1295', 'Data Science & AI', 'Kritika Rana'),
-                                                                   ('CSU1659', 'Deep Learning', 'Shrawan Kumar'),
-                                                                   ('CSU271', 'Cloud Computing Architecture', 'Ahmad Salehi');
+INSERT INTO `subjects` (`course_id`, `course_name`) VALUES
+                                                        ('CSU1290', 'Web Technology Programming'),
+                                                        ('CSU1290P', 'Web Technology Programming Lab'),
+                                                        ('CSU1292', 'Advance Theory of Automata'),
+                                                        ('CSU1293', 'Design and Analysis of Algorithm'),
+                                                        ('CSU1293P', 'Design and Analysis of Algorithm Lab'),
+                                                        ('CSU1294', 'Operating System Concepts'),
+                                                        ('CSU1294P', 'Operating System Concepts Lab'),
+                                                        ('CSU1295', 'Data Science & AI'),
+                                                        ('CSU1659', 'Deep Learning'),
+                                                        ('CSU271', 'Cloud Computing Architecture');
 
 -- --------------------------------------------------------
 
@@ -211,8 +237,10 @@ INSERT INTO `timeframe` (`tid`, `stime`, `etime`) VALUES
 --
 
 CREATE TABLE `timetable` (
+                             `id` int(11) NOT NULL,
                              `day` int(4) NOT NULL,
                              `tid` int(11) NOT NULL,
+                             `fid` varchar(15) NOT NULL,
                              `course_id` varchar(150) NOT NULL,
                              `grp` char(1) DEFAULT NULL,
                              `room_no` varchar(50) NOT NULL
@@ -222,70 +250,71 @@ CREATE TABLE `timetable` (
 -- Dumping data for table `timetable`
 --
 
-INSERT INTO `timetable` (`day`, `tid`, `course_id`, `grp`, `room_no`) VALUES
-                                                                          (2, 1, 'CSU1290P', 'a', 'G-102'),
-                                                                          (2, 2, 'CSU1290P', 'a', 'G-102'),
-                                                                          (2, 3, 'CSU1293', '', 'G-103'),
-                                                                          (2, 4, 'CSU1659', '', 'G-149'),
-                                                                          (2, 5, 'CSU1295', '', 'G-104'),
-                                                                          (2, 6, 'CSU271', '', 'G-105'),
-                                                                          (2, 8, 'CSU1292', '', 'G-106'),
-                                                                          (3, 2, 'CSU1292', '', 'G-107'),
-                                                                          (3, 3, 'CSU1294P', 'a', 'G-108'),
-                                                                          (3, 4, 'CSU1294P', 'a', 'G-108'),
-                                                                          (3, 3, 'CSU1293P', 'b', 'G-110'),
-                                                                          (3, 4, 'CSU1293P', 'b', 'G-110'),
-                                                                          (3, 6, 'CSU1294', '', 'G-112'),
-                                                                          (3, 7, 'CSU1295', '', 'G-113'),
-                                                                          (3, 8, 'CSU271', '', 'G-114'),
-                                                                          (3, 8, 'CSU1659', '', 'G-115'),
-                                                                          (3, 9, 'CSU1290', '', 'G-116'),
-                                                                          (4, 1, 'CSU1294P', 'a', 'G-117'),
-                                                                          (4, 2, 'CSU1293', '', 'G-118'),
-                                                                          (4, 4, 'CSU1295', '', 'G-119'),
-                                                                          (4, 7, 'CSU271', '', 'G-120'),
-                                                                          (4, 8, 'CSU1294', '', 'G-121'),
-                                                                          (4, 9, 'CSU1290', '', 'G-122'),
-                                                                          (5, 1, 'CSU271', '', 'G-123'),
-                                                                          (5, 2, 'CSU1290', '', 'G-124'),
-                                                                          (5, 3, 'CSU1293P', 'b', 'G-125'),
-                                                                          (5, 4, 'CSU1293P', 'b', 'G-125'),
-                                                                          (5, 7, 'CSU1659', '', 'G-127'),
-                                                                          (5, 8, 'CSU1292', '', 'G-128'),
-                                                                          (5, 9, 'CSU1293', '', 'G-129'),
-                                                                          (6, 1, 'CSU1290P', 'a', 'G-130'),
-                                                                          (6, 2, 'CSU1290P', 'a', 'G-130'),
-                                                                          (6, 3, 'CSU1295', '', 'G-132'),
-                                                                          (6, 6, 'CSU1292', '', 'G-133'),
-                                                                          (6, 7, 'CSU1659', '', 'G-134'),
-                                                                          (6, 8, 'CSU1294', '', 'G-135');
+INSERT INTO `timetable` (`id`, `day`, `tid`, `fid`, `course_id`, `grp`, `room_no`) VALUES
+                                                                                       (1, 2, 1, 'FTA07881168', 'CSU1290P', 'a', 'G-102'),
+                                                                                       (2, 2, 2, 'FTA07881168', 'CSU1290P', 'a', 'G-102'),
+                                                                                       (3, 2, 3, 'FTA31143777', 'CSU1293', '', 'G-103'),
+                                                                                       (4, 2, 4, 'FTA06184040', 'CSU1659', '', 'G-149'),
+                                                                                       (5, 2, 5, 'FTA19241699', 'CSU1295', '', 'G-104'),
+                                                                                       (6, 2, 6, 'FTA39670625', 'CSU271', '', 'G-105'),
+                                                                                       (7, 2, 8, 'FTA56190528', 'CSU1292', '', 'G-106'),
+                                                                                       (8, 3, 2, 'FTA56190528', 'CSU1292', '', 'G-107'),
+                                                                                       (9, 3, 3, 'FTA49848913', 'CSU1294P', 'a', 'G-108'),
+                                                                                       (10, 3, 4, 'FTA49848913', 'CSU1294P', 'a', 'G-108'),
+                                                                                       (11, 3, 3, 'FTA31143777', 'CSU1293P', 'b', 'G-110'),
+                                                                                       (12, 3, 4, 'FTA31143777', 'CSU1293P', 'b', 'G-110'),
+                                                                                       (13, 3, 6, 'FTA49848913', 'CSU1294', '', 'G-112'),
+                                                                                       (14, 3, 7, 'FTA19241699', 'CSU1295', '', 'G-113'),
+                                                                                       (15, 3, 8, 'FTA39670625', 'CSU271', '', 'G-114'),
+                                                                                       (16, 3, 8, 'FTA06184040', 'CSU1659', '', 'G-115'),
+                                                                                       (17, 3, 9, 'FTA07881168', 'CSU1290', '', 'G-116'),
+                                                                                       (18, 4, 1, 'FTA49848913', 'CSU1294P', 'a', 'G-117'),
+                                                                                       (19, 4, 2, 'FTA31143777', 'CSU1293', '', 'G-118'),
+                                                                                       (20, 4, 4, 'FTA19241699', 'CSU1295', '', 'G-119'),
+                                                                                       (21, 4, 7, 'FTA39670625', 'CSU271', '', 'G-120'),
+                                                                                       (22, 4, 8, 'FTA49848913', 'CSU1294', '', 'G-121'),
+                                                                                       (23, 4, 9, 'FTA07881168', 'CSU1290', '', 'G-122'),
+                                                                                       (24, 5, 1, 'FTA39670625', 'CSU271', '', 'G-123'),
+                                                                                       (25, 5, 2, 'FTA07881168', 'CSU1290', '', 'G-124'),
+                                                                                       (26, 5, 3, 'FTA31143777', 'CSU1293P', 'b', 'G-125'),
+                                                                                       (27, 5, 4, 'FTA31143777', 'CSU1293P', 'b', 'G-125'),
+                                                                                       (28, 5, 7, 'FTA06184040', 'CSU1659', '', 'G-127'),
+                                                                                       (29, 5, 8, 'FTA56190528', 'CSU1292', '', 'G-128'),
+                                                                                       (30, 5, 9, 'FTA31143777', 'CSU1293', '', 'G-129'),
+                                                                                       (31, 6, 1, 'FTA07881168', 'CSU1290P', 'a', 'G-130'),
+                                                                                       (32, 6, 2, 'FTA07881168', 'CSU1290P', 'a', 'G-130'),
+                                                                                       (33, 6, 3, 'FTA19241699', 'CSU1295', '', 'G-132'),
+                                                                                       (34, 6, 6, 'FTA56190528', 'CSU1292', '', 'G-133'),
+                                                                                       (35, 6, 7, 'FTA06184040', 'CSU1659', '', 'G-134'),
+                                                                                       (36, 6, 8, 'FTA49848913', 'CSU1294', '', 'G-135');
 
 --
 -- Indexes for dumped tables
 --
 
 --
+-- Indexes for table `faculty`
+--
+ALTER TABLE `faculty`
+    ADD PRIMARY KEY (`fid`);
+
+--
 -- Indexes for table `mca_ai`
 --
 ALTER TABLE `mca_ai`
-    ADD PRIMARY KEY (`stid`),
-  ADD UNIQUE KEY `stid` (`stid`);
+    ADD PRIMARY KEY (`stid`);
 
 --
 -- Indexes for table `mca_cc`
 --
 ALTER TABLE `mca_cc`
-    ADD PRIMARY KEY (`stid`),
-  ADD UNIQUE KEY `stid` (`stid`);
+    ADD PRIMARY KEY (`stid`);
 
 --
 -- Indexes for table `mca_dop`
 --
 ALTER TABLE `mca_dop`
-    ADD PRIMARY KEY (`stid`),
-  ADD UNIQUE KEY `stid` (`stid`),
-  ADD UNIQUE KEY `stid_2` (`stid`),
-  ADD UNIQUE KEY `stid_3` (`stid`);
+    ADD PRIMARY KEY (`stid`);
 
 --
 -- Indexes for table `subjects`
@@ -297,13 +326,50 @@ ALTER TABLE `subjects`
 -- Indexes for table `sub_course`
 --
 ALTER TABLE `sub_course`
-    ADD PRIMARY KEY (`course_id`,`course`);
+    ADD KEY `course_id` (`course_id`,`course`);
 
 --
 -- Indexes for table `timeframe`
 --
 ALTER TABLE `timeframe`
     ADD PRIMARY KEY (`tid`);
+
+--
+-- Indexes for table `timetable`
+--
+ALTER TABLE `timetable`
+    ADD PRIMARY KEY (`id`),
+  ADD KEY `fid` (`fid`),
+  ADD KEY `tid` (`tid`),
+  ADD KEY `course_id` (`course_id`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `timetable`
+--
+ALTER TABLE `timetable`
+    MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
+
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `sub_course`
+--
+ALTER TABLE `sub_course`
+    ADD CONSTRAINT `sub_course_ibfk_1` FOREIGN KEY (`course_id`) REFERENCES `subjects` (`course_id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+--
+-- Constraints for table `timetable`
+--
+ALTER TABLE `timetable`
+    ADD CONSTRAINT `timetable_ibfk_1` FOREIGN KEY (`fid`) REFERENCES `faculty` (`fid`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `timetable_ibfk_2` FOREIGN KEY (`course_id`) REFERENCES `subjects` (`course_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `timetable_ibfk_3` FOREIGN KEY (`tid`) REFERENCES `timeframe` (`tid`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
