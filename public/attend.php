@@ -69,7 +69,7 @@ if(isset($_SESSION['time-id'])) {
         <div id="api-sub-container">
             <h5 class="time-heading" id="cur-day">Day</h5>
             <p class="start-end-time">11:00 - 12:00</p>
-            <p class="course-with-id-grp">Course</p>
+            <p class="subject-with-id-grp">Course</p>
             <p class="faculty-name">faculty</p>
             <p class="room-code">room-G</p>
         </div>

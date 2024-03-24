@@ -25,7 +25,7 @@ if(count($_POST)) {
 
     // creating new student info for user input
     $params = [
-        'course' => $_POST['course'],
+        'course_id' => $_POST['course'],
         'name' => $_POST['name'],
         'student_id' => $_POST['student_id'],
         'group' => $_POST['group']
@@ -33,6 +33,8 @@ if(count($_POST)) {
 
     if($students->createStudent($params)) {
         echo json_encode(['message' => 'Data posted successfully!']);
+    } else {
+        echo json_encode(['message' => 'Data already exist!']);
     }
 }
 // for raw data object
@@ -41,7 +43,7 @@ else if(isset($data)) {
 
     // creating new student info for user input
     $params = [
-        'course' => $data->course,
+        'course_id' => $data->course,
         'name' => $data->name,
         'student_id' => $data->student_id,
         'group' => $data->group
@@ -49,5 +51,7 @@ else if(isset($data)) {
 
     if($students->createStudent($params)) {
         echo json_encode(['message' => 'Data posted successfully!']);
+    } else {
+        echo json_encode(['message' => 'Data already exist!']);
     }
 }

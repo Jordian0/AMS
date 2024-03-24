@@ -7,7 +7,7 @@
 .background-body {
     width: 100%;
     min-width: 1040px;
-    height: -webkit-fill-available;
+    height: 800px;
 }
 
 .top-buttons {
@@ -158,20 +158,23 @@
 
 
 .success-m, .error-m {
-    display: block;
-    margin-top: 15px;
     margin-left: auto;
     margin-right: auto;
-    width: 300px;
+    margin-bottom: 50px;
+    width: fit-content;
     height: 50px;
     font-size: 18px;
-    font-weight: bold;
+    font-weight: 600;
     padding-top: 10px;
+    padding-left: 15px;
+    padding-right: 15px;
     text-align: center;
+    border-radius: 5px;
+    background-color: rgba(255, 255, 255, 0.7);
 }
 .success-m {
-    background-color: #dff0d8 !important;
+    color: green;
 }
 .error-m {
-    background-color: #f0d8d8 !important;
+    color: red;
 }

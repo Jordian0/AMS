@@ -1,3 +1,5 @@
+<?php session_start(); ?>
+
 <!doctype html>
 <html lang="en">
 <head>
@@ -81,12 +83,12 @@
 
         <section id="delete-stu">
             <h1 class="text-center form-head">Deleting student data from the database</h1>
-            <form class="form-dcont-div" action="" method="post" onsubmit="return validateFormD()">
+            <form class="form-dcont-div" action="delete.php" method="post" onsubmit="return validateFormD()">
                 <div class="form-group">
                     <label for="course-d" class="col-sm">Course</label>
-                    <select class="form-control spacing-5" name="course-select" id="course-d"
+                    <select class="form-control spacing-5" name="course-select-d" id="course-d"
                             aria-describedby="selectHelp">
-                        <option value="All" selected>All</option>
+                        <option value="" selected>All</option>
                         <option value="mca_ai">MCA AI</option>
                         <option value="mca_cc">MCA CC</option>
                         <option value="mca_dop">MCA DevOps</option>
@@ -98,7 +100,7 @@
 
                 <div class="form-group">
                     <label for="enrollNo-d" class="col-sm">Enrollment no *</label>
-                    <input type="text" name="enrollNo" class="form-control spacing-6" id="enrollNo-d"
+                    <input type="text" name="enrollNo-d" class="form-control spacing-6" id="enrollNo-d"
                            aria-describedby="enrollmentHelp" value="PGD20" required>
                     <small id="enrollmentHelp-d" class="text-muted dele-info">
                         Must be exact 12 characters long.
@@ -110,14 +112,14 @@
                 </div>
             </form>
         </section>
+
+        <?php
+        // Include the success message display logic
+        require 'message.php';
+        ?>
+
     </div>
 
-
-    <!-- .........  -->
-    <?php
-    // Include the success message display logic
-        include 'sql_message.php';
-    ?>
 
     <script src="validate.js"></script>
 

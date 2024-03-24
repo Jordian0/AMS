@@ -21,17 +21,17 @@ $db = $database->connect();
 $students = new Students($db);
 
 if(isset($_GET['course'])) {
-    $course = $_GET['course'];
+    $subject = $_GET['course'];
     // echo $course;
 
     // checking if group is set or not
     if(isset($_GET['group'])) {
         $group = $_GET['group'];
         // echo $group;
-        $data = $students->readStudentsCourseGroup($course, $group);
+        $data = $students->readStudentsCourseGroup($subject, $group);
     }
     else {
-        $data = $students->readStudentCourse($course);
+        $data = $students->readStudentCourse($subject);
     }
 
     $temp = 1;
@@ -41,10 +41,10 @@ if(isset($_GET['course'])) {
         // rearrange the students data
         while($row = $data->fetch(PDO::FETCH_OBJ)) {
             $slist[$temp++] = [
-                'course_id' => $row->course_id,
-                'course' => $row->course,
+                'id' => $row->id,
+                'course_name' => $row->course_name,
                 'name' => $row->name,
-                'student id' => $row->stid,
+                'student_id' => $row->stid,
                 'group' => $row->grp
             ];
         }

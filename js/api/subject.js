@@ -16,7 +16,7 @@ async function getSubject(page) {
 
 function updateAttendPage(data) {
     // Extracting values from the controller response
-    const {stime, etime, course_id, course, faculty, grp, room_no} = data;
+    const {stime, etime, subject_id, subject, faculty, grp, room_no} = data;
 
     // Assigning values to variables
     let group;
@@ -28,22 +28,22 @@ function updateAttendPage(data) {
     // setting up query selectors to target attend html page elements
     const mcontainer = document.getElementById('api-sub-container')
     let mstartEndTime = mcontainer.querySelector('.start-end-time');
-    let mcourseWithId = mcontainer.querySelector('.course-with-id-grp');
+    let mcourseWithId = mcontainer.querySelector('.subject-with-id-grp');
     let mteacherName = mcontainer.querySelector('.faculty-name');
     let mroomCode = mcontainer.querySelector('.room-code');
     // updating content based on JSON data
     mstartEndTime.innerHTML = `${stime} - ${etime}`;
     if (group)
-        mcourseWithId.innerHTML = `${course}(${course_id}) - Group: ${group}`;
+        mcourseWithId.innerHTML = `${subject}(${subject_id}) - Group: ${group}`;
     else
-        mcourseWithId.innerHTML = `${course} (${course_id})`;
+        mcourseWithId.innerHTML = `${subject} (${subject_id})`;
     mteacherName.innerHTML = `${faculty}`;
     mroomCode.innerHTML = `${room_no}`;
 }
 
 function updateApstatusPage(data) {
     // Extracting values from the controller response
-    const {stime, etime, course_id, course, faculty, grp, room_no} = data;
+    const {stime, etime, subject_id, subject, faculty, grp, room_no} = data;
 
     // Assigning values to variables
     let group = grp.toUpperCase();
@@ -56,9 +56,9 @@ function updateApstatusPage(data) {
     let sroomCode = scontainer.querySelector('.room-number');
     // updating content based on JSON data
     if(group)
-        ssubjectName.innerHTML = `${course}(${course_id}) - Group: ${group}`;
+        ssubjectName.innerHTML = `${subject}(${subject_id}) - Group: ${group}`;
     else
-        ssubjectName.innerHTML = `${course} (${course_id})`;
+        ssubjectName.innerHTML = `${subject} (${subject_id})`;
     steacherName.innerHTML = `${faculty}`;
     stimePeriod.innerHTML = `${stime} - ${etime}`;
     sroomCode.innerHTML = `${room_no}`;

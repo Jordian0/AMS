@@ -8,7 +8,7 @@ ini_set('display_error', 1);
 // Headers
 Header('Access-Control-Allow-Origin: *');
 Header('Content-Type: application/json');
-Header('Access-Control-Allow-Method: POST');
+Header('Access-Control-Allow-Method: GET');
 
 // Including required files
 include_once('../../config/Database.php');
@@ -30,10 +30,11 @@ if($data->rowCount()) {
     // rearrange the data
     while($row = $data->fetch(PDO::FETCH_OBJ)) {
         $tslots[$temp++] = [
+            'tid' => $row->tid,
             'stime' => $row->stime,
             'etime' => $row->etime,
-            'course_id' => $row->course_id,
-            'course' => $row->course,
+            'subject_id' => $row->subject_id,
+            'subject' => $row->subject,
             'faculty' => $row->name,
             'grp' => $row->grp,
             'room_no' => $row->room_no,

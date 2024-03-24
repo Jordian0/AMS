@@ -15,37 +15,38 @@ async function getTime() {
         if(data.hasOwnProperty(key)) {
             // console.log(data[key]);
             const item = data[key];
-            const stime = item.stime;
-            // console.log(stime);
+            // console.log(item);
+            const time_id = item.tid;
+            // console.log(time_id);
 
             // Select the div based on the stime
             let targetDiv;
-            switch (stime) {
-                case '09:15:00':
+            switch (time_id) {
+                case 1:
                     targetDiv = document.getElementById('tm-1');
                     break;
-                case '10:10:00':
+                case 2:
                     targetDiv = document.getElementById('tm-2');
                     break;
-                case '11:05:00':
+                case 3:
                     targetDiv = document.getElementById('tm-3');
                     break;
-                case '12:00:00':
+                case 4:
                     targetDiv = document.getElementById('tm-4');
                     break;
-                case '12:55:00':
+                case 5:
                     targetDiv = document.getElementById('tm-5');
                     break;
-                case '13:50:00':
+                case 6:
                     targetDiv = document.getElementById('tm-6');
                     break;
-                case '14:45:00':
+                case 7:
                     targetDiv = document.getElementById('tm-7');
                     break;
-                case '15:40:00':
+                case 8:
                     targetDiv = document.getElementById('tm-8');
                     break;
-                case '16:35:00':
+                case 9:
                     targetDiv = document.getElementById('tm-9');
                     break;
                 default:
@@ -69,7 +70,7 @@ async function getTime() {
                     group = '';
 
                 // Update content based on JSON data
-                subjectName.innerHTML = `${item.course} ${group} - <u>${item.faculty}</u>`;
+                subjectName.innerHTML = `${item.subject} ${group} - <u>${item.faculty}</u>`;
                 roomCode.innerHTML = item.room_no;
 
                 // Add classname to the inner div

@@ -58,10 +58,11 @@ class TimeSlot {
         // Query for reading timetable table
         $query = '
             SELECT 
+                tt.tid,
                 timeframe.stime,
                 timeframe.etime,
-                tt.course_id,
-                subjects.course_name as course,
+                tt.subject_id,
+                subjects.subject_name as subject,
                 faculty.name,
                 tt.grp,
                 tt.room_no
@@ -70,9 +71,9 @@ class TimeSlot {
             LEFT JOIN
                 timeframe ON tt.tid = timeframe.tid
             LEFT JOIN
-                subjects ON tt.course_id = subjects.course_id
+                subjects ON tt.subject_id = subjects.subject_id
             LEFT JOIN
-                faculty ON subjects.fid = faculty.fid
+                faculty ON tt.fid = faculty.fid
             WHERE
                 tt.day = ?
         ';
@@ -114,8 +115,8 @@ class TimeSlot {
                 tt.tid,
                 timeframe.stime,
                 timeframe.etime,
-                tt.course_id,
-                subjects.course_name as course,
+                tt.subject_id,
+                subjects.subject_name as subject,
                 faculty.name,
                 tt.grp,
                 tt.room_no
@@ -124,12 +125,11 @@ class TimeSlot {
             LEFT JOIN
                 timeframe ON tt.tid = timeframe.tid
             LEFT JOIN
-                subjects ON tt.course_id = subjects.course_id
+                subjects ON tt.subject_id = subjects.subject_id
             LEFT JOIN
-                faculty ON subjects.fid = faculty.fid
+                faculty ON tt.fid = faculty.fid
             WHERE
                 tt.day = ? AND tt.tid=?
-            LIMIT 0,1
         ';
 
         $times= $this->connection->prepare($query);

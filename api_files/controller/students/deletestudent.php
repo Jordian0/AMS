@@ -22,9 +22,9 @@ $data = json_decode(file_get_contents("php://input"));      // for raw object da
 // for form data object
 if(count($_POST)) {
 //    print_r($_POST);
-    if($_POST['course']) {
+    if(isset($_POST['course'])) {
         $params = [
-            'course'=>$_POST['course'],
+            'course_id'=>$_POST['course'],
             'student_id'=>$_POST['student_id']
         ];
 
@@ -50,7 +50,7 @@ else if(isset($data)) {
 //    print_r($data);
     if(isset($data->course)) {
         $params = [
-            'course'=>$data->course,
+            'course_id'=>$data->course,
             'student_id'=>$data->student_id
         ];
 

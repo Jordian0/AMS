@@ -15,6 +15,7 @@ ini_set('display_errors', 1);
 // class for students table
 class Students {
     // timetable properties
+    public $subject_id;
     public $course_id;
     public $name;
     public $stid;
@@ -40,7 +41,7 @@ class Students {
      *     summary="Method to get students data from particular course and from particular group",
      *     tags={"Students"},
      *     @OA\Parameter(
-     *         name="course",
+     *         name="subject_id",
      *         in="query",
      *         required=true,
      *         description="course id passed to get the students data who are registered for the course",
@@ -63,82 +64,126 @@ class Students {
      */
 
     // Method to get students data who studies particular course
-    public function readStudentCourse($course) {
-        $this->course_id = $course;
-//        echo $this->course_id;
+    public function readStudentCourse($subject_id) {
+        $this->subject_id = $subject_id;
+//        echo $this->subject_id;
 
         $query = '
             SELECT
-                *
+                sub_course.id,
+                course.course_name,
+                mca_cc.name,
+                mca_cc.stid,
+                mca_cc.grp
             FROM
-                '.$this->table.'
+                '.$this->table.' sub_course
+            LEFT JOIN
+                course ON sub_course.course_id = course.course_id
             JOIN
-                '.$this->cc.' ON sub_course.course = \'mca_cc\'
+                mca_cc ON sub_course.course_id = \'mca_cc\'
             WHERE
-                course_id =?
+                subject_id =?
             UNION ALL
-            SELECT *
-                FROM '.$this->table.'
+            SELECT
+                sub_course.id,
+                course.course_name,
+                mca_dop.name,
+                mca_dop.stid,
+                mca_dop.grp
+            FROM
+                '.$this->table.' sub_course
+            LEFT JOIN
+                course ON sub_course.course_id = course.course_id
             JOIN
-                '.$this->dop.' ON sub_course.course = \'mca_dop\'
+                mca_dop ON sub_course.course_id = \'mca_dop\'
             WHERE
-                course_id =?
+                subject_id =?
             UNION ALL
-            SELECT *
-                FROM '.$this->table.'
+            SELECT
+                sub_course.id,
+                course.course_name,
+                mca_ai.name,
+                mca_ai.stid,
+                mca_ai.grp
+            FROM
+                '.$this->table.' sub_course
+            LEFT JOIN
+                course ON sub_course.course_id = course.course_id
             JOIN
-                '.$this->ai.' ON sub_course.course = \'mca_ai\'
+                mca_ai ON sub_course.course_id = \'mca_ai\'
             WHERE
-                course_id =?
+                subject_id =?
         ';
 
         $students = $this->connection->prepare($query);
-        $students->bindValue(1, $this->course_id, PDO::PARAM_STR);
-        $students->bindValue(2, $this->course_id, PDO::PARAM_STR);
-        $students->bindValue(3, $this->course_id, PDO::PARAM_STR);
+        $students->bindValue(1, $this->subject_id, PDO::PARAM_STR);
+        $students->bindValue(2, $this->subject_id, PDO::PARAM_STR);
+        $students->bindValue(3, $this->subject_id, PDO::PARAM_STR);
         $students->execute();
 
         return $students;
     }
 
     // method to read students data who study particular course and form particular group
-    public function readStudentsCourseGroup($course, $group) {
-        $this->course_id = $course;
+    public function readStudentsCourseGroup($subject_id, $group) {
+        $this->subject_id = $subject_id;
         $this->grp = $group;
-//         echo $this->course_id,$this->grp;
+//         echo $this->subject_id,$this->grp;
 
         // Query for reading timetable table
         $query = '
             SELECT
-                *
+                sub_course.id,
+                course.course_name,
+                mca_cc.name,
+                mca_cc.stid,
+                mca_cc.grp
             FROM
                 '.$this->table.' sub_course
+            LEFT JOIN
+                course ON sub_course.course_id = course.course_id
             JOIN
-                '.$this->cc.' ON sub_course.course = \'mca_cc\'
+                mca_cc ON sub_course.course_id = \'mca_cc\'
             WHERE
-                course_id=? AND grp=?
+                subject_id=? AND grp=?
             UNION ALL
-            SELECT *
-                FROM '.$this->table.' sub_course
+            SELECT 
+                sub_course.id,
+                course.course_name,
+                mca_dop.name,
+                mca_dop.stid,
+                mca_dop.grp
+            FROM 
+                '.$this->table.' sub_course
+            LEFT JOIN 
+                course ON sub_course.course_id = course.course_id
             JOIN
-                '.$this->dop.' ON sub_course.course = \'mca_dop\' 
+                mca_dop ON sub_course.course_id = \'mca_dop\' 
             WHERE
-                course_id=? AND grp=?
+                subject_id=? AND grp=?
             UNION ALL
-            SELECT *
-                FROM '.$this->table.' sub_course
+            SELECT  
+                sub_course.id,
+                course.course_name,
+                mca_ai.name,
+                mca_ai.stid,
+                mca_ai.grp
+            FROM 
+                '.$this->table.' sub_course
+            LEFT JOIN
+                course ON sub_course.course_id = course.course_id
             JOIN
-                '.$this->ai.' ON sub_course.course = \'mca_ai\'
+                mca_ai ON sub_course.course_id = \'mca_ai\'
             WHERE
-                course_id=? AND grp=?
+                subject_id=? AND grp=?
         ';
 
         $students = $this->connection->prepare($query);
-        $students->bindValue(1, $this->course_id, PDO::PARAM_STR);
+        $students->bindValue(1, $this->subject_id, PDO::PARAM_STR);
         $students->bindValue(2, $this->grp, PDO::PARAM_STR);
-        $students->bindValue(3, $this->course_id, PDO::PARAM_STR);
+        $students->bindValue(3, $this->subject_id, PDO::PARAM_STR);
         $students->bindValue(4, $this->grp, PDO::PARAM_STR);
-        $students->bindValue(5, $this->course_id, PDO::PARAM_STR);
+        $students->bindValue(5, $this->subject_id, PDO::PARAM_STR);
         $students->bindValue(6, $this->grp, PDO::PARAM_STR);
         $students->execute();
 
@@ -156,7 +201,7 @@ class Students {
      *             mediaType="multipart/form-data",
      *             @OA\Schema(
      *                 @OA\Property(
-     *                     property="course",
+     *                     property="course_id",
      *                     type="string"
      *                 ),
      *                 @OA\Property(
@@ -177,7 +222,7 @@ class Students {
      *             mediaType="json",
      *             @OA\Schema(
      *                 @OA\Property(
-     *                     property="course",
+     *                     property="course_id",
      *                     type="string",
      *                 ),
      *                 @OA\Property(
@@ -204,18 +249,23 @@ class Students {
     {
         try {
             // assigning values
-            $this->course_id = $params['course'];
+            $this->course_id = $params['course_id'];
             $this->name = $params['name'];
             $this->stid = $params['student_id'];
             $this->grp = $params['group'];
 
             // Query to store new student info in database
             $query = '
-                INSERT INTO '.$this->course_id.'
-                    SET
-                    name=:name,
-                    stid=:studentid,
-                    grp=:group
+                INSERT INTO '.$this->course_id.' (name, stid, grp)
+                SELECT :name, :studentid, :group
+                FROM DUAL
+                WHERE NOT EXISTS (
+                            SELECT stid FROM mca_ai WHERE stid = :studentid
+                    UNION ALL
+                    SELECT stid FROM mca_cc WHERE stid = :studentid
+                    UNION ALL
+                    SELECT stid FROM mca_dop WHERE stid = :studentid
+                )
             ';
 
             $students = $this->connection->prepare($query);
@@ -225,8 +275,8 @@ class Students {
             $students->bindValue('studentid', $this->stid, PDO::PARAM_STR);
             $students->bindValue('group', $this->grp, PDO::PARAM_STR);
 
-            // executing
-            if($students->execute())
+            // executing and checking if it made any changes in the table or not
+            if($students->execute() && $students->rowCount() > 0)
                 return true;
 
             return false;
@@ -254,7 +304,7 @@ class Students {
      *                      required=true
      *                 ),
      *                 @OA\Property(
-     *                     property="course",
+     *                     property="course_id",
      *                     type="string",
      *                     description="Optional: course which student belongs to",
      *                 )
@@ -269,7 +319,7 @@ class Students {
      *                      description="Student id whose data is to be deleted",
      *                  ),
      *                  @OA\Property(
-     *                      property="course",
+     *                      property="course_id",
      *                      type="string",
      *                      description="Optional: course which student belongs to",
      *                  ),
@@ -285,7 +335,7 @@ class Students {
     {
         try {
             // assigning values
-            $this->course_id = $params['course'];
+            $this->course_id = $params['course_id'];
             $this->stid = $params['student_id'];
 
             // Query for updating existing record
@@ -321,9 +371,9 @@ class Students {
 
             // Query for updating existing record
             $query = '
-                    DELETE FROM '.$this->ai.' WHERE stid=:studentid
-                    OR stid IN (SELECT stid FROM '.$this->cc.' WHERE stid=:studentid)
-                    OR stid IN (SELECT stid FROM '.$this->dop.' WHERE stid=:studentid)
+                    DELETE FROM mca_ai WHERE stid=:studentid
+                    OR stid IN (SELECT stid FROM mca_cc WHERE stid=:studentid)
+                    OR stid IN (SELECT stid FROM mca_dop WHERE stid=:studentid)
             ';
 
             $students = $this->connection->prepare($query);
