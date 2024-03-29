@@ -6,6 +6,7 @@ if(!isset($_SESSION['UserData'])) {
     header("location: ./login.php");
     exit;
 }
+
 ?>
 
 <!doctype html>

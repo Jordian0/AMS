@@ -20,9 +20,6 @@ class Students {
     public $name;
     public $stid;
     public $grp;
-    public $ai = 'mca_ai';
-    public $cc = 'mca_cc';
-    public $dop = 'mca_dop';
 
     // Database Data
     private $connection;

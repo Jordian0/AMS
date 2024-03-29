@@ -1,10 +1,10 @@
 @import "default.css";
 
 .headerd {
-    min-width: 800px;
+    min-width: 850px;
 }
 .background-body {
-    min-width: 800px;
+    min-width: 850px;
     width: 100%;
     min-height: 850px;
 }

@@ -20,8 +20,8 @@ $db = $database->connect();
 
 $students = new Students($db);
 
-if(isset($_GET['course'])) {
-    $subject = $_GET['course'];
+if(isset($_GET['subject_id'])) {
+    $subject = $_GET['subject_id'];
     // echo $course;
 
     // checking if group is set or not

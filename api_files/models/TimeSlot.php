@@ -76,6 +76,7 @@ class TimeSlot {
                 faculty ON tt.fid = faculty.fid
             WHERE
                 tt.day = ?
+            ORDER BY tt.tid
         ';
 
         $times= $this->connection->prepare($query);

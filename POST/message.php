@@ -13,7 +13,7 @@ if (isset($_SESSION['suc_message'])) {
         echo '<div class="error-m">'.$_SESSION['suc_message'].'</div>';
     }
 
-    // Checkign if data is delete or not (for delete page)
+    // Checking if data is delete or not (for delete page)
     if(str_contains($_SESSION['suc_message'], 'deleted successfully')) {
         echo '<div class="success-m">'.$_SESSION['suc_message'].'</div>';
     }

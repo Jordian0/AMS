@@ -1,6 +1,3 @@
-// Importing API endpoint
-// import { timetableAPI } from "./apiEndpoints.js";
-
 
 // Function to fetch data from the API
 async function getTime() {
@@ -11,7 +8,7 @@ async function getTime() {
     // console.log(data);
 
     // Retrieving data from JSON
-    for(const key in data) {
+    for(let key in data) {
         if(data.hasOwnProperty(key)) {
             // console.log(data[key]);
             const item = data[key];

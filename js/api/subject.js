@@ -1,3 +1,6 @@
+// Global variable
+let subid_stu, group_stu;
+
 // Function to fetch the subject/class data from the table
 async function getSubject(page) {
     // console.log(timeid);
@@ -12,6 +15,10 @@ async function getSubject(page) {
         updateAttendPage(data);
     else if(page === 'status')
         updateApstatusPage(data);
+
+    // getting subject_id and group of the class
+    subid_stu = data['subject_id'];
+    group_stu = data['grp'] ? data['grp'] : '';
 }
 
 function updateAttendPage(data) {
@@ -62,7 +69,6 @@ function updateApstatusPage(data) {
     steacherName.innerHTML = `${faculty}`;
     stimePeriod.innerHTML = `${stime} - ${etime}`;
     sroomCode.innerHTML = `${room_no}`;
-
 }
 
 

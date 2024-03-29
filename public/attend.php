@@ -65,7 +65,6 @@ if(isset($_SESSION['time-id'])) {
         </div>
 
 
-
         <div id="api-sub-container">
             <h5 class="time-heading" id="cur-day">Day</h5>
             <p class="start-end-time">11:00 - 12:00</p>
@@ -81,11 +80,18 @@ if(isset($_SESSION['time-id'])) {
         // console.log(timeid);
     </script>
     <script type="text/javascript" src="../js/attend.js"></script>
-    <script src="../js/api/subject.js"></script>
     <script src="../js/api/apiEndpoints.js"></script>
-    <script type="module">
-        getSubject('attend');
+    <script src="../js/api/subject.js"></script>
+    <script src="../js/api/student.js"></script>
+
+    <script>
+        (async () => {
+            await getSubject('attend');          // Wait for getSubject to complete
+            // console.log(subid_stu, group_stu);
+            await getStudents();          // getting the students data
+        })();
     </script>
+    <script>getSubject('attend')</script>
 
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.3/dist/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
