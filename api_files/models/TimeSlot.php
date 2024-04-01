@@ -52,7 +52,8 @@ class TimeSlot {
     // Method to read all the saved subjects from database
     public function readTable() {
         $today = date('l');
-        $this->day = $this->days[$today];
+//        $this->day = $this->days[$today];
+        $this->day = 2;
 //        echo $this->day;
 
         // Query for reading timetable table
@@ -107,7 +108,8 @@ class TimeSlot {
     // Method to read one subjects from database
     public function readSubject($tid) {
         $today = date('l');
-        $this->day = $this->days[$today];
+//        $this->day = $this->days[$today];
+        $this->day = 2;
         $this->tid = $tid;
 
         // Query for reading timetable table

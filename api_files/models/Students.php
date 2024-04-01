@@ -257,7 +257,7 @@ class Students {
                 SELECT :name, :studentid, :group
                 FROM DUAL
                 WHERE NOT EXISTS (
-                            SELECT stid FROM mca_ai WHERE stid = :studentid
+                    SELECT stid FROM mca_ai WHERE stid = :studentid
                     UNION ALL
                     SELECT stid FROM mca_cc WHERE stid = :studentid
                     UNION ALL
