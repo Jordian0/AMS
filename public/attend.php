@@ -38,24 +38,33 @@ if(isset($_SESSION['time-id'])) {
             <div class="atd-a toggle">ATD</div>
         </div>
         <div class="attend-container">
-            <form action="#" method="post" name="Attend" class="form-attend" onsubmit="return validateForm()">
+            <form name="Attend" class="form-attend">
                 <div class="form-group">
                     <label for="course-select"></label>
                     <select class="custom-select" name="course-select" id="course-select">
-                        <option selected>All</option>
-                        <option value="1">MCA AI</option>
-                        <option value="2">MCA CC</option>
-                        <option value="3">MCA DevOps</option>
+                        <option value="" selected>All</option>
+                        <option value="MCA AI" disabled>MCA AI</option>
+                        <option value="MCA CC" disabled>MCA CC</option>
+                        <option value="MCA DevOps" disabled>MCA DevOps</option>
                     </select>
                     <label for="sid" class="hidden-label">Student ID:</label>
-                    <input type="text" id="sid" placeholder="Student ID or Name" aria-describedby="sidHelp"/>
+                    <input type="text" id="sid" placeholder="Student ID" value="PGD2023" aria-describedby="sidHelp"/>
                     <div id="sidHelp" class="invalid-feedback">
-                        Please pick a name/SID.
+                        12 characters in Student ID.
+                    </div>
+                    <div id="sidSuccess" class="valid-feedback">
+                        Successfully marked
+                    </div>
+                    <div id="sidError" class="invalid-feedback">
+                        Invalid Student ID
+                    </div>
+                    <div id="sidAlready" class="invalid-feedback">
+                        Already Marked
                     </div>
                 </div>
                 <div class="form-group flex-button">
-                    <button type="button" class="sts-btn btn" onclick="redirectToPage()">Status</button>
-                    <button type="submit" class="mrk-btn btn">Mark</button>
+                    <button type="button" class="sts-btn btn" onclick="redirectToStatus()">Status</button>
+                    <button type="button" class="mrk-btn btn" onclick=" validateForm()">Mark</button>
                 </div>
             </form>
 
@@ -79,19 +88,26 @@ if(isset($_SESSION['time-id'])) {
         const timeid = <?php echo $timeid ?>;
         // console.log(timeid);
     </script>
-    <script type="text/javascript" src="../js/attend.js"></script>
+    <script src="../js/attend.js"></script>
     <script src="../js/api/apiEndpoints.js"></script>
     <script src="../js/api/subject.js"></script>
     <script src="../js/api/student.js"></script>
 
     <script>
-        (async () => {
-            await getSubject('attend');          // Wait for getSubject to complete
-            // console.log(subid_stu, group_stu);
-            await getStudents();          // getting the students data
-        })();
+        if(localStorage.getItem("students") === null) {
+            (async () => {
+                await getSubject('attend');          // Wait for getSubject to complete
+                // console.log(subid_stu, group_stu);
+                await getStudents();          // getting the students data
+                disableDropdown();
+            })();
+        }
+        else {
+            getSubject('attend');
+            disableDropdown();
+        }
     </script>
-    <script>getSubject('attend')</script>
+
 
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.3/dist/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>

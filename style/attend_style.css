@@ -108,9 +108,16 @@
 .custom-select::backdrop {
     box-shadow: 0 2px 20px 1px rgba(0,0,0,0.1), 0 3px 6px 0 rgba(0,0,0,0.23);
 }
-.invalid-feedback {
+.invalid-feedback, .valid-feedback {
     position: absolute;
+    font-size: 17px !important;
     margin-left: 200px !important;
+}
+#sidSuccess, #sidError, #sidAlready {
+    font-weight: 600 !important;
+}
+#sidAlready {
+    color: orangered !important;
 }
 
 .flex-button {

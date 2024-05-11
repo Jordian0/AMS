@@ -59,11 +59,12 @@
 }
 
 .atstatus-container {
-    height: 999px;
+    min-height:800px;
     min-width: 800px;
     margin-left: 120px;
     margin-right: 120px;
     margin-bottom: 65px;
+    padding-bottom: 50px;
     background-color: white;
     border-radius: 0 0 20px 20px;
     filter: drop-shadow(3px 3px 20px rgba(0,0,0,0.2));
@@ -71,7 +72,7 @@
 
 #about-class {
     height: 130px;
-    padding: 20px;
+    padding: 20px 20px 0 20px;
 }
 .subject-name-code {
     width: 600px;
@@ -98,6 +99,12 @@
     text-decoration: underline;
 }
 
+hr.div-line {
+    border-top: 5px solid #bbb;
+    opacity: 50%;
+    margin-top: 0;
+}
+
 #present-table {
     display: block;
 }
@@ -105,9 +112,17 @@
     display: none;
 }
 
-.div-block {
+.div-block-p, .div-block-a {
+    color: white;
+    padding: 5px 20px 5px 20px;
+    font-weight: 600;
     height: 30px;
-    background-color: var(--div-color);
+}
+.div-block-p {
+    background-color: var(--div-color-p);
+}
+.div-block-a {
+    background-color: var(--div-color-a);
 }
 
 .table {
@@ -115,6 +130,13 @@
     width: 90% !important;
     margin-left: auto;
     margin-right: auto;
+    margin-bottom: 40px !important;
+}
+thead {
+    background-color: linen !important;
+}
+#no-margin {
+    margin-bottom: 0 !important;
 }
 .table th {
     font-weight: 600;
@@ -122,15 +144,37 @@
 .table th, .table td {
     padding: 0.55rem !important;;
 }
+.table tr th:first-child {
+    text-align: center;
+}
+.remove-p p {
+    margin: 0;
+    text-decoration: underline;
+    color: lightcoral;
+}
+.remove-p p:hover {
+    color: red;
+    cursor: pointer;
+}
+.mark-p p {
+    margin: 0;
+    text-decoration: underline;
+    color: cornflowerblue;
+}
+.mark-p p:hover {
+    color: blue;
+    cursor: pointer;
+}
 
 
 /* Subject button */
 .ex-btn-box {
     position: relative;
     overflow: hidden;
+    z-index: 6;
     float: right;
-    left: 160px;
-    bottom: 230px;
+    left: 40px;
+    top: 100px;
     width: 250px;
     height: 70px;
     transform: rotate(90deg);

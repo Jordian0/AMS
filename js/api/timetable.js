@@ -84,3 +84,7 @@ async function getTime() {
 getTime();
 
 
+
+// clearing students data localstorage
+localStorage.removeItem("students");
+localStorage.removeItem("class_courses");

@@ -6,7 +6,8 @@
     --danger-color: #E33535;
     --disabled-color: #979797;
     --redirect-color: #FD7E14;
-    --div-color: rgba(64, 108, 210, 0.8);
+    --div-color-p: rgba(64, 108, 210, 0.8);
+    --div-color-a: rgba(210, 64, 64, 0.8);
 }
 
 ::placeholder {

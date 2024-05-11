@@ -42,6 +42,11 @@ if(isset($_SESSION['time-id'])) {
             <div class="toggle attend-b div-button-hover" onclick="redirectToPage()">Mark</div>
         </div>
 
+        <!-- Button to go back to time -->
+        <div class="ex-btn-box">
+            <div class="select-t toggle hvr-float" onclick="redirectToSubj()">Subject</div>
+        </div>
+
         <div class="atstatus-container">
             <div id="about-class">
                 <p class="subject-name-code">Subject Name</p>
@@ -50,77 +55,69 @@ if(isset($_SESSION['time-id'])) {
                 <p class="room-number">G-230</p>
             </div>
 
+            <hr class="div-line">        <!-- Horizontal line -->
+
             <div id="present-table">
-                <div class="div-block"></div>
-                <table class="table table-bordered table-hover">
-                    <thead class="thead-light">
-                        <tr>
-                            <th scope="col">#</th>
-                            <th scope="col">First</th>
-                            <th scope="col">Last</th>
-                            <th scope="col">Handle</th>
-                        </tr>
-                    </thead>
-                    <tbody class="table-hover">
-                        <tr>
-                            <th scope="row">1</th>
-                            <td>Mark</td>
-                            <td>Otto</td>
-                            <td>@mdo</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">2</th>
-                            <td>Jacob</td>
-                            <td>Thornton</td>
-                            <td>@fat</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">3</th>
-                            <td>Larry</td>
-                            <td>The Bird</td>
-                            <td>@twitter</td>
-                        </tr>
-                    </tbody>
-                </table>
+                <template id="table-template-p">
+                    <table id="no-margin" class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col" style="display:none"></th>
+                                <th scope="col">Student Name</th>
+                                <th scope="col">Student ID</th>
+                                <th scope="col"></th>
+                            </tr>
+                        </thead>
+                    </table>
+                    <div class="div-block-p">MCA CC</div>
+                    <table class="table table-bordered table-hover table-striped">
+                        <tbody id="present-table-body">
+                            <template id="present-table-row">
+                            <tr>
+                                <th class="id" scope="row">ID</th>
+                                <td class="uid-no" style="display:none">UIDNo</td>
+                                <td class="student-name">Name of student</td>
+                                <td class="student-id">ID of student</td>
+                                <td class="remove-p"><p onclick="markAbsent(this)">remove</p></td>
+                            </tr>
+                            </template>
+                        </tbody>
+                    </table>
+                </template>
             </div>
 
             <div id="absent-table">
-                <div class="div-block"></div>
-                <table class="table table-bordered table-hover">
-                    <thead class="thead-light">
-                        <tr>
-                            <th scope="col">#</th>
-                            <th scope="col">absent first</th>
-                            <th scope="col">absent last</th>
-                            <th scope="col">roll no</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <th scope="row">1</th>
-                            <td>Mark</td>
-                            <td>Otto</td>
-                            <td>@mdo</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">2</th>
-                            <td>Jacob</td>
-                            <td>Thornton</td>
-                            <td>@fat</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">3</th>
-                            <td>Larry</td>
-                            <td>The Bird</td>
-                            <td>@twitter</td>
-                        </tr>
-                    </tbody>
-                </table>
+                <template id="table-template-a">
+                    <table id="no-margin" class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col" style="display:none"></th>
+                                <th scope="col">Student Name</th>
+                                <th scope="col">Student ID</th>
+                                <th scope="col"></th>
+                            </tr>
+                        </thead>
+                    </table>
+                    <div class="div-block-a">MCA CC</div>
+                    <table class="table table-bordered table-hover table-striped  ">
+                        <tbody id="absent-table-body">
+                            <template id="absent-table-row">
+                                <tr>
+                                    <th class="id" scope="row">ID</th>
+                                    <td class="uid-no" style="display:none">UIDNo</td>
+                                    <td class="student-name">Name of student</td>
+                                    <td class="student-id">ID of student</td>
+                                    <td class="mark-p"><p
+                                                onclick="markPresent(this)">mark</p></td>
+                                </tr>
+                            </template>
+                        </tbody>
+                    </table>
+                </template>
             </div>
 
-            <div class="ex-btn-box">
-                <div class="select-t toggle hvr-float" onclick="redirectToSubj()">Subject</div>
-            </div>
         </div>
     </div>
 
@@ -135,6 +132,7 @@ if(isset($_SESSION['time-id'])) {
     <script src="../js/api/student.js"></script>
     <script>
         getSubject('status');
+        displayStudentsTable();
     </script>
 
 

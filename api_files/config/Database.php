@@ -6,7 +6,7 @@ class Database {
     private $host = 'localhost:3307';
     private $db_name = 'attend';
     private $username = 'phpstorm';
-    private $password = 'phpstormsql';
+    private $password = 'phpstorm';
     private $connection = null;
 
     // Function for making connection with database
