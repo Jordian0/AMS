@@ -230,7 +230,3 @@ Here are some potential future updates:
    - Incorporate mechanisms for collecting feedback and evaluations from students and instructors.
    - Use feedback data to continuously improve course content, teaching methods, and platform usability.
 
-
-## References
-- [Login](https://www.w3schools.in/php/examples/php-login-without-using-database)
-- [Logout](https://www.codewithharry.com/videos/php-tutorials-in-hindi-44/)
